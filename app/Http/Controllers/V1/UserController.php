@@ -29,6 +29,15 @@ class UserController extends Controller
             });
         }
 
+        if($request->term){
+            $term = '%'.$request->term.'%';
+            $items->where(function($q) use ($term) {
+                $q->where('email', 'LIKE',$term)
+                  ->orWhere('name','LIKE',$term);
+            });
+
+        }
+
         $users = $items->paginate(20);
 
         return response()->json(['users' => $users]);
