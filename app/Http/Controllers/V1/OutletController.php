@@ -39,7 +39,7 @@ class OutletController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'name' => 'required',
             'location' => 'required',
             'phone' => 'required',
@@ -48,6 +48,10 @@ class OutletController extends Controller
         ]);
         
         Outlet::create($request->all());
+
+        return response()->json([
+            'created' => true,
+        ]);
     }
 
     /**
@@ -58,7 +62,9 @@ class OutletController extends Controller
      */
     public function show($id)
     {
-        //
+        $outlet = Outlet::findOrFail($id);
+
+        return response()->json(['outlet' => $outlet]);
     }
 
     /**
@@ -81,7 +87,20 @@ class OutletController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required',
+            'location' => 'required',
+            'phone' => 'required',
+            'create_by' => 'required',
+            'status' => 'required',
+        ]);
+
+        $outlet=Outlet::findOrFail($id);
+        $outlet->update($request->all());
+
+        return response()->json([
+            'updated' => true,
+        ]);
     }
 
     /**
@@ -92,6 +111,11 @@ class OutletController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $outlet = Outlet::findOrFail($id);
+        $outlet->delete();
+
+        return response()->json([
+            'deleted' => true,
+        ]);
     }
 }
