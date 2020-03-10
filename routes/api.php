@@ -11,6 +11,7 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'v1', 'namespace' => 'V1']
         Route::get('me', 'AuthController@me');
         Route::get('permissions', 'PermissionController')->name('permission');
         Route::get('roles', 'RoleController')->name('roles');
+        
     });
 
     Route::apiResources([
@@ -38,7 +39,8 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'v1', 'namespace' => 'V1']
         'return-sale'    => 'ReturnSaleController',
         'return-purchase'=> 'ReturnPurchaseController',
 
-        'calendar' => 'CalendarController'
+        'calendar' => 'CalendarController',
+        'outlets' => 'OutletController',
     ]);
 
     Route::get('activity', 'ActivityController@index');
