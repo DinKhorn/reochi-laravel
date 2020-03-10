@@ -17,9 +17,9 @@ class BranchSeeder extends Seeder
     {
     	$faker = Factory::create();
 
-    	$location = ['Heng Heng', 'Cute Shop'];
+    	$location = ['Heng Heng', 'Cute Shop', 'Long Long Shop'];
 
-    	foreach($location as $i) {
+    	foreach($location as $i){
     		Branch::create([
                 'user_id' => \App\User::all()->random()->id,
     			'name' => $i,
