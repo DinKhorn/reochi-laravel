@@ -15,7 +15,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'active' => $faker->randomElement(['1', '0']),
         'code' => $faker->randomNumber($nbDigits = NULL, $strict = false),
         'type' => $faker->randomElement(['New', 'Old', 'Second Hand']),
-        'barcode' => $faker->creditCardNumber,
+        // 'barcode' => $faker->creditCardNumber,
         'unit' => $faker->numberBetween($min=1, $max=1000),
         'price' => $faker->numberBetween($min=10, $max=10000),
     ];

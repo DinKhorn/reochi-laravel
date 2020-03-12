@@ -11,7 +11,7 @@ class Product extends Model
 {
 
 	protected $fillable = [
-        'name', 'description', 'active', 'code', 'type', 'barcode', 'unit', 'price', 'user_id', 'order_id', 'sale_id', 'brand_id', 'image'
+        'name', 'description', 'active', 'code', 'type', 'unit', 'price', 'user_id', 'order_id', 'sale_id', 'image'
     ];
 
 
@@ -64,10 +64,10 @@ class Product extends Model
         return $this->belongsToMany(\App\Sale::class)->withPivot('quantity', 'unit_price');
     }
 
-    public function brand()
-    {
-        return $this->belongsTo(\App\Brand::class, 'brand_id');
-    }
+    // public function brand()
+    // {
+    //     return $this->belongsTo(\App\Brand::class, 'brand_id');
+    // }
 
     public function return_sales()
     {

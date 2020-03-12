@@ -34,8 +34,8 @@ class LocationController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'name' => 'required|min:3',
-            'address' => 'required|min:3',
+            'name' => 'required',
+            'address' => 'required',
             'city' => 'nullable',
             'country' => 'nullable',
             'description' => 'nullable',
@@ -76,8 +76,8 @@ class LocationController extends Controller
     public function update(Request $request, $id)
     {
         $validateData = $request->validate([
-            'name' => 'required|min:3',
-            'address' => 'required|min:3',
+            'name' => 'required',
+            'address' => 'required',
             'city' => 'nullable',
             'country' => 'nullable',
             'description' => 'nullable',

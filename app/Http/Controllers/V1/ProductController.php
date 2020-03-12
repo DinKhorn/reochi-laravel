@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Product;
-
+// use App\Brand;
 use App\Order;
 
 use App\Http\Resources\ProductResource;
@@ -22,7 +22,7 @@ class ProductController extends Controller
     {   
 
         $itemsPerPage = empty(request('itemsPerPage')) ? 10 : (int)request('itemsPerPage');
-        $products = Product::with(['brand', 'orders'])
+        $products = Product::with(['orders'])
                         ->orderBy('id', 'desc')
                         ->paginate($itemsPerPage);
 
@@ -40,10 +40,11 @@ class ProductController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'code' => 'required',
-            'barcode' => 'required',
+            // 'barcode' => 'required',
             'description' => 'nullable',
             'unit' => 'required|numeric',
             'price' => 'required|numeric',
+            // 'brand_id' => 'nullable',
         ]);
 
         // Save Image
@@ -73,16 +74,16 @@ class ProductController extends Controller
             $product = new Product();
             $product->image = $fileName;
             $product->user_id = auth()->user()->id;
-            $product->brand_id = auth()->user()->id;
+            // $product->brand_id = auth()->user()->id;
             $product->name = $request->name;
             $product->code = $request->code;
-            $product->barcode = $request->barcode;
+            // $product->barcode = $request->barcode;
             $product->description = $request->description;
             $product->unit = $request->unit;
             $product->price = $request->price;
             $product->save();
 
-            $product->brand()->associate($request->brand['id'])->save();
+            // $product->brand()->associate($request->brand['id'])->save();
 
             $order = new Order();
             $order->discount = $request->discount; 
@@ -98,16 +99,16 @@ class ProductController extends Controller
 
             $product = new Product();
             $product->user_id = auth()->user()->id;
-            $product->brand_id = $request->brand['id'];
+            // $product->brand_id = $request->brand['id'];
             $product->name = $request->name;
             $product->code = $request->code;
-            $product->barcode = $request->barcode;
+            // $product->barcode = $request->barcode;
             $product->description = $request->description;
             $product->unit = $request->unit;
             $product->price = $request->price;
             $product->save();
 
-            $product->brand()->associate($request->brand['id'])->save();
+            // $product->brand()->associate($request->brand['id'])->save();
 
             $order = new Order();
             $order->discount = $request->discount; 
@@ -133,8 +134,7 @@ class ProductController extends Controller
      */ 
     public function show($id)
     {
-        $product = Product::with(['brand'])
-                            ->findOrFail($id);
+        $product = Product::findOrFail($id);
 
         return response()->json(['product' => $product]);
     }
@@ -151,10 +151,11 @@ class ProductController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'code' => 'required',
-            'barcode' => 'required',
+            // 'barcode' => 'required',
             'description' => 'nullable',
             'unit' => 'required|integer',
             'price' => 'required|numeric',
+            // 'brand_id' => 'nullable',
         ]);
 
 
@@ -187,16 +188,16 @@ class ProductController extends Controller
             $product = Product::findOrFail($id);
             $product->image = $fileName;
             $product->user_id = auth()->user()->id;
-            $product->brand_id = auth()->user()->id;
+            // $product->brand_id = auth()->user()->id;
             $product->name = $request->name;
             $product->code = $request->code;
-            $product->barcode = $request->barcode;
+            // $product->barcode = $request->barcode;
             $product->description = $request->description;
             $product->unit = $request->unit;
             $product->price = $request->price;
             $product->save();
 
-            $product->brand()->associate($request->brand['id'])->save();
+            // $product->brand()->associate($request->brand['id'])->save();
 
             $order = new Order();
             $order->discount = $request->discount; 
@@ -212,16 +213,16 @@ class ProductController extends Controller
 
             $product = Product::findOrFail($id);
             $product->user_id = auth()->user()->id;
-            $product->brand_id = $request->brand['id'];
+            // $product->brand_id = $request->brand['id'];
             $product->name = $request->name;
             $product->code = $request->code;
-            $product->barcode = $request->barcode;
+            // $product->barcode = $request->barcode;
             $product->description = $request->description;
             $product->unit = $request->unit;
             $product->price = $request->price;
             $product->save();
 
-            $product->brand()->associate($request->brand['id'])->save();
+            // $product->brand()->associate($request->brand['id'])->save();
 
             $order = new Order();
             $order->discount = $request->discount; 
