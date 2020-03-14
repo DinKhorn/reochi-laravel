@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\v1;
 
 use App\Http\Controllers\Controller;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\{User};
 
@@ -13,10 +16,22 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function export_csv()
+    {
+        return Excel::download(new UsersExport, 'user.xlsx');
+    }
+
+
+    public function export_pdf()
+    {
+        return Excel::download(new UsersExport, 'user.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
+    }
+
     public function index(Request $request)
     {   
-        $items      = User::OrderBy('id', 'desc');
-        
+        $items      = User::with('role')->has('role')->OrderBy('id', 'desc');
+      
         if($request->name) {
             $items->where(function($q) use ($request) {
                 $q->where('name', 'like', '%' . $request->name . '%');
@@ -38,7 +53,7 @@ class UserController extends Controller
 
         }
 
-        $users = $items->paginate(20);
+        $users = $items->paginate(10);
 
         return response()->json(['users' => $users]);
     }
@@ -54,13 +69,15 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
+            'role'=>'required',
             'password' => 'required|between:6,25'
         ]);
 
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->role_id = $request->role;
+        $user->password = Hash::make($request->password);
         $user->save();
 
         return response()->json([
@@ -97,7 +114,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
         $user->save();
 
         return response()->json([

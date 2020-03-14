@@ -30,9 +30,9 @@ class RoleController extends Controller
 
     public function index()
     {
-        $itemsPerPage = empty(request('itemsPerPage')) ? 5 : (int)request('itemsPerPage');
-        $role = Role::orderBy('id', 'desc')
-                            ->paginate($itemsPerPage);
+        // $itemsPerPage = empty(request('itemsPerPage')) ? 5 : (int)request('itemsPerPage');
+        $role = Role::orderBy('id', 'desc')->get();
+                            // ->paginate($itemsPerPage);
         return response()->json(['role' => $role]);
     }
 

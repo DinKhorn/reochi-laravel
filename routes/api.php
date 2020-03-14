@@ -66,3 +66,6 @@ Route::post('purchase/upload', 'V1\PurchaseController@import');
 Route::get('purchase/export', 'V1\PurchaseController@export');
 Route::get('purchase/export-pdf', 'V1\PurchaseController@export_pdf');
 
+// User 
+Route::get('user/export-csv', 'V1\UserController@export_csv');
+Route::get('user/export-pdf', 'V1\UserController@export_pdf');

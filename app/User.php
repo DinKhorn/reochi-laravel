@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','role_id'
     ];
 
     /**
@@ -41,39 +41,43 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-    public function branches()
+    public function role()
     {
-        return $this->hasMany(\App\Branch::class); 
+        return $this->belongsTo(\App\Role::class);
     }
 
-    public function products()
-    {
-        return $this->hasMany(\App\Product::class);
-    }
+    // public function branches()
+    // {
+    //     return $this->hasMany(\App\Branch::class); 
+    // }
 
-    public function customers()
-    {
-        return $this->hasMany(\App\Customer::class);
-    }
+    // public function products()
+    // {
+    //     return $this->hasMany(\App\Product::class);
+    // }
 
-    public function sales()
-    {
-        return $this->hasMany(\App\Sale::class);
-    }
+    // public function customers()
+    // {
+    //     return $this->hasMany(\App\Customer::class);
+    // }
 
-    public function expenses()
-    {
-        return $this->hasMany(\App\Expense::class);
-    }
+    // public function sales()
+    // {
+    //     return $this->hasMany(\App\Sale::class);
+    // }
 
-    public function accounts()
-    {
-        return $this->hasOne(\App\Account::class);
-    }
+    // public function expenses()
+    // {
+    //     return $this->hasMany(\App\Expense::class);
+    // }
 
-    public function department()
-    {
-        return $this->hasOne(\App\Department::class);
-    }
+    // public function accounts()
+    // {
+    //     return $this->hasOne(\App\Account::class);
+    // }
+
+    // public function department()
+    // {
+    //     return $this->hasOne(\App\Department::class);
+    // }
 }
