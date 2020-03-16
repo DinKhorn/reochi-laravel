@@ -18,8 +18,7 @@ class LocationController extends Controller
     {
 
         $itemsPerPage = empty(request('itemsPerPage')) ? 5 : (int)request('itemsPerPage');
-        $locations = Branch::with(['user.sales', 'transfers'])
-                        ->orderBy('id', 'desc')
+        $locations = Branch::orderBy('id', 'desc')
                         ->paginate($itemsPerPage);
 
         return response()->json(['locations' => $locations]);
