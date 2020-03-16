@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Outlet;
+use App\Exports\OutletsExport;
 use Illuminate\Http\Request;
 
 class OutletController extends Controller
@@ -13,10 +15,22 @@ class OutletController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function export_csv()
+    {
+        return Excel::download(new OutletsExport, 'outlets.xlsx');
+    }
+
+
+    public function export_pdf()
+    {
+        return Excel::download(new OutletsExport, 'outlets.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
+    }
+
     public function index()
     {
         $itemsPerPage = empty(request('itemsPerPage')) ? 5 : (int)request('itemsPerPage');
-        $outlets = Outlet::orderBy('id', 'desc')
+        $outlets = Outlet::orderBy('id', 'asc')
                             ->paginate($itemsPerPage);
         return response()->json(['outlets' => $outlets]);
     }
