@@ -19,15 +19,13 @@ class ProductSeeder extends Seeder
 
         // Product::truncate();
 
-        foreach (range(1,5) as $i) {
+        foreach (range(1,3) as $i) {
             Product::create([
                 'user_id' => \App\User::all()->random()->id,
                 // 'brand_id' => \App\Brand::all()->random()->id,
-                'name' => $faker->randomElement(['CaCo', 'Limon', 'DayDay', 'Pepsi']),
-                // 'image' => $faker->image('public/image', 50, 50, null, false),
+                'name' => $faker->randomElement(['CaCo', 'DayDay', 'Pepsi']),
                 'active' => $faker->randomElement(['1', '0']),
                 'code' => $faker->randomNumber($nbDigits = NULL, $strict = false),
-                // 'barcode' => $faker->creditCardNumber,
                 'unit' => $faker->numberBetween($min=1, $max=1000),
                 'price' => $faker->numberBetween($min=10, $max=10000),
             ]);
