@@ -14,10 +14,10 @@ class Branch extends Model
     	return $this->belongsTo(\App\User::class);
     }
 
-    public function purchases()
-    {
-    	return $this->hasMany(\App\Purchase::class);
-    }
+    // public function purchases()
+    // {
+    // 	return $this->hasMany(\App\Purchase::class);
+    // }
 
     public function transfers()
     {
