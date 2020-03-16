@@ -30,7 +30,7 @@ class UserController extends Controller
 
     public function index(Request $request)
     {   
-        $items      = User::with('role')->has('role')->OrderBy('id', 'desc');
+        $items      = User::with('role')->OrderBy('id', 'desc');
       
         if($request->name) {
             $items->where(function($q) use ($request) {
