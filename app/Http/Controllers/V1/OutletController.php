@@ -27,11 +27,25 @@ class OutletController extends Controller
         return Excel::download(new OutletsExport, 'outlets.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
     }
 
-    public function index()
+    public function index(Request $request)
     {
         $itemsPerPage = empty(request('itemsPerPage')) ? 5 : (int)request('itemsPerPage');
-        $outlets = Outlet::orderBy('id', 'asc')
-                            ->paginate($itemsPerPage);
+        $outlets = Outlet::orderBy('id', 'asc');
+                           
+
+        if($request->search){
+            $search = '%'.$request->search.'%';
+            $outlets->where(function($q) use ($search) {
+                $q->where('location', 'LIKE',$search)
+                    ->orWhere('name','LIKE',$search)
+                    ->orWhere('phone','LIKE',$search)
+                    ->orWhere('create_by','LIKE',$search)
+                    ->orWhere('status','LIKE',$search);
+            });
+        }
+
+        $outlets =  $outlets->paginate($itemsPerPage);
+
         return response()->json(['outlets' => $outlets]);
     }
 
