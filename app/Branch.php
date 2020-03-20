@@ -42,4 +42,8 @@ class Branch extends Model
     {
         return $this->hasMany(\App\Quotation::class);
     }
+    public function supplier()
+    {
+       return $this->hasMany(\App\Supplier::class);
+    }
 }

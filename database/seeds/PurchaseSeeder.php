@@ -20,7 +20,7 @@ class PurchaseSeeder extends Seeder
         foreach(range(1, 5) as $i) {
         	Purchase::create([
 		        // 'branch_id' => \App\Branch::all()->random()->id,
-                'supplier_id' => \App\Supplier::all()->random()->id,
+                // 'supplier_id' => \App\Supplier::all()->random()->id,
 		        // 'date' => $faker->date($format = 'Y-m-d', $max = 'now')
                 // 'supplier_id' => \App\Supplier::all()->random()->id,
 		        'reference_no' => 'pr-' . date('Ymd-') . date('His'),

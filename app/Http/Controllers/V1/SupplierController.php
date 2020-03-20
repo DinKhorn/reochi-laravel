@@ -17,8 +17,7 @@ class SupplierController extends Controller
     public function index()
     {
         $itemsPerPage = empty(request('itemsPerPage')) ? 5 : (int)request('itemsPerPage');
-        $suppliers = Supplier::with(['purchases'])
-                            ->orderBy('id', 'desc')
+        $suppliers = Supplier::orderBy('id', 'desc')
                             ->paginate(5);
 
         return response()->json(['suppliers' => $suppliers]);
@@ -33,30 +32,30 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:3',
+            'name' => 'required',
             'email' => 'required|email',
             'description' => 'nullable',
             'company_name' => 'required',
             'phone' => 'required',
             'address' => 'required',
-            'vat_number' => 'nullable',
-            'post_code' => 'nullable',
-            'city' => 'nullable',
-            'country' => 'nullable',
+            // 'vat_number' => 'nullable',
+            // 'post_code' => 'nullable',
+            // 'city' => 'nullable',
+            // 'country' => 'nullable',
         ]);
 
         $supplier = new Supplier(); 
-        $supplier->purchase_id = auth()->user()->id;
+        // $supplier->purchase_id = auth()->user()->id;
         $supplier->name = $request->input('name');
         $supplier->email = $request->input('email');
         $supplier->description = $request->input('description');
         $supplier->company_name = $request->input('company_name');
         $supplier->phone = $request->input('phone');
         $supplier->address = $request->input('address');
-        $supplier->vat_number = $request->input('vat_number');
-        $supplier->post_code = $request->input('post_code');
-        $supplier->city = $request->input('city');
-        $supplier->country = $request->input('country');
+        // $supplier->vat_number = $request->input('vat_number');
+        // $supplier->post_code = $request->input('post_code');
+        // $supplier->city = $request->input('city');
+        // $supplier->country = $request->input('country');
         $supplier->save();
 
         return response()->json(['created' => true]);
@@ -85,30 +84,30 @@ class SupplierController extends Controller
     public function update(Request $request, $id)
     {   
         $request->validate([
-            'name' => 'required|min:3',
+            'name' => 'required',
             'email' => 'required|email',
             'description' => 'nullable',
             'company_name' => 'required',
             'phone' => 'required',
             'address' => 'required',
-            'vat_number' => 'nullable',
-            'post_code' => 'nullable',
-            'city' => 'nullable',
-            'country' => 'nullable',
+            // 'vat_number' => 'nullable',
+            // 'post_code' => 'nullable',
+            // 'city' => 'nullable',
+            // 'country' => 'nullable',
         ]);
 
         $supplier = Supplier::findOrFail($id); 
-        $supplier->purchase_id = auth()->user()->id;
+        // $supplier->purchase_id = auth()->user()->id;
         $supplier->name = $request->input('name');
         $supplier->email = $request->input('email');
         $supplier->description = $request->input('description');
         $supplier->company_name = $request->input('company_name');
         $supplier->phone = $request->input('phone');
         $supplier->address = $request->input('address');
-        $supplier->vat_number = $request->input('vat_number');
-        $supplier->post_code = $request->input('post_code');
-        $supplier->city = $request->input('city');
-        $supplier->country = $request->input('country');
+        // $supplier->vat_number = $request->input('vat_number');
+        // $supplier->post_code = $request->input('post_code');
+        // $supplier->city = $request->input('city');
+        // $supplier->country = $request->input('country');
         $supplier->save();
 
         return response()->json(['updated' => true]);

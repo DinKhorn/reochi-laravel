@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Purchase;
 use App\Product;
-use App\Supplier;
+// use App\Supplier;
 use App\Branch;
 
 use App\Http\Resources\PurchaseResource;
@@ -77,7 +77,7 @@ class PurchaseController extends Controller
 
         $purchase = new Purchase();
         $purchase->branch_id = auth()->id();
-        $purchase->supplier_id = auth()->id();
+        // $purchase->supplier_id = auth()->id();
         $purchase->reference_no =  'pr' . date('Ymd-') . date('His') . str_pad($count + 1, 4, '0', STR_PAD_LEFT);
         $purchase->purchase_status = $request->purchase_status;
         $purchase->shipping_cost = $request->shipping_cost;
@@ -88,7 +88,7 @@ class PurchaseController extends Controller
         // dd($request->location);
 
         // $supplier = Supplier::findOrFail($request->supplier['id']);
-        $new_purchase = $purchase->supplier()->associate($request->supplier['id']);
+        // $new_purchase = $purchase->supplier()->associate($request->supplier['id']);
         $new_purchase = $purchase->branch()->associate($request->location['id']);
         $new_purchase->save();
 
@@ -117,7 +117,7 @@ class PurchaseController extends Controller
      */
     public function show($id)
     {
-        $purchase = Purchase::with(['supplier', 'branch', 'products'])
+        $purchase = Purchase::with(['branch', 'products'])
                             ->findOrFail($id);
 
         return response()->json(['purchase', $purchase]);
@@ -142,7 +142,7 @@ class PurchaseController extends Controller
  
         $purchase = Purchase::findOrFail($id);
         $purchase->branch_id = auth()->id();
-        $purchase->supplier_id = auth()->id();
+        // $purchase->supplier_id = auth()->id();
         $purchase->reference_no =  $purchase->reference_no;
         $purchase->purchase_status = $request->purchase_status;
         $purchase->shipping_cost = $request->shipping_cost;
@@ -154,7 +154,7 @@ class PurchaseController extends Controller
         $purchase->branch()->associate($request->branch['id'])->save();
 
         // Save Associate Supplier Relationship
-        $purchase->supplier()->associate($request->supplier['id'])->save();
+        // $purchase->supplier()->associate($request->supplier['id'])->save();
             
         $deletePivot = $purchase->products()
                                     ->where($request->product['id'], $id)

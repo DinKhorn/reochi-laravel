@@ -16,7 +16,7 @@ class CreatePurchasesTable extends Migration
         Schema::create('purchases', function (Blueprint $table) {
             $table->bigIncrements('id');
             // $table->unsignedBigInteger('branch_id');
-            $table->unsignedBigInteger('supplier_id');
+            // $table->unsignedBigInteger('supplier_id');
             $table->string('reference_no')->nullable();
             $table->text('description')->nullable();
             $table->boolean('active')->default(1);
@@ -27,7 +27,7 @@ class CreatePurchasesTable extends Migration
             $table->timestamps();
 
             // $table->foreign('branch_id')->references('id')->on('branches');
-            $table->foreign('supplier_id')->references('id')->on('suppliers');
+            // $table->foreign('supplier_id')->references('id')->on('suppliers');
         });
     }
 
