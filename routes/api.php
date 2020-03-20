@@ -41,7 +41,9 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'v1', 'namespace' => 'V1']
 
         'calendar' => 'CalendarController',
         'outlets' => 'OutletController',
+        'order' => 'OrderController',
         'roles' => 'Auth\RoleController',
+        'stock-in' => 'StockInController',
     ]);
 
     Route::get('activity', 'ActivityController@index');
