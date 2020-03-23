@@ -13,6 +13,7 @@ class AlterTableOrders extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('order');
         Schema::dropIfExists('orders');
         Schema::create('orders', function (Blueprint $table) {
