@@ -11,7 +11,7 @@ class OrderController extends Controller
     public function index(){
         $itemsPerPage = empty(request('itemsPerPage')) ? 5 : (int)request('itemsPerPage');
 
-        $orders = Order::orderBy('id', 'desc')
+        $orders = Order::orderBy('id', 'asc')
                         ->with(['outlet','order_by','location'])
                         ->paginate($itemsPerPage);
 
