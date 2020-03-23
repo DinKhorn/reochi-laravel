@@ -81,4 +81,8 @@ class Product extends Model
     {
         return $this->belongsToMany(\App\Quotation::class)->withPivot('quantity', 'unit_price','discount');
     }
+    public function productcategory()
+    {
+        return $this->belongsToMany(\App\ProductCategory::class);
+    }
 }
