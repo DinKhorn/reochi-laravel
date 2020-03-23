@@ -3,26 +3,28 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
-use App\Order;
 use Illuminate\Http\Request;
+use App\StockOut;
 
-class OrderController extends Controller
+class StockOutController extends Controller
 {
     public function index(){
         $itemsPerPage = empty(request('itemsPerPage')) ? 5 : (int)request('itemsPerPage');
 
-        $orders = Order::orderBy('id', 'desc')
-                        ->with(['outlet','order_by','location'])
+        $orders = StockOut::orderBy('id', 'desc')
+                        // ->with(['outlet','order_by','location'])
                         ->paginate($itemsPerPage);
 
         return response()->json(['orders' => $orders]);  
     }
 
     public function store(Request $request){
+
         $product_items = [];    
         $total = 0;
         $user_id=\Auth::user()->id;
-        $count = Order::whereDay('created_at', date('d'))->count();
+
+        dd($request->all());
 
         if(isset($request->items)) {
             foreach($request->items as $item) {
@@ -49,33 +51,17 @@ class OrderController extends Controller
             }
         }
 
-        $order=new Order();
-        $order->reference_no='order-'. date('Ymd-') . date('His') . str_pad($count + 1, 4, '0', STR_PAD_LEFT);
-        $order->outlet_id=$request->outlet_name['id'];
-        $order->location_id=$request->location['id'];
-        $order->order_status=$request->order_status;
-        $order->payment_status=$request->payment_status;
-        $order->note=$request->description;
-        $order->sub_total=$total;
-        $order->due_amount=0;
-        $order->total=$total-0;
-        $order->created_by=$user_id;
-        $order->updated_by=$user_id;
-        $order->save();
-
-        $order->order_detail()->createMany($product_items);
-
-        return response()->json([
-            'created' => true,
-        ]);
-    }
-
-    public function show($id){
-        $order = Order::with(['outlet','order_by','location'])
-                        ->with(['order_detail' => function($q){
-                            $q->with('product');
-                        }])->findOrFail($id);
-
-        return response()->json(['order', $order]);
+        $stock_out = new StockOut();
+        $stock_out->reference_no = $request->reference_no;
+        $stock_out->supplier_id  = $request->supplier_id;
+        $stock_out->product_id   = $stock_out->
+        $stock_out->quantity     = $request->
+        $stock_out->unit_price   = $request->
+        $stock_out->sub_amount   = $request->
+        $stock_out->amount       = $request->
+        $stock_out->note         = $request->description;
+        $stock_out->created_by   = $request->$user_id;
+        $stock_out->updated_by   = $request->$user_id;
+        $stock_out -> save();
     }
 }

@@ -44,6 +44,7 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'v1', 'namespace' => 'V1']
         'order' => 'OrderController',
         'roles' => 'Auth\RoleController',
         'stock-in' => 'StockInController',
+        'stock-out' => 'StockOutController',
     ]);
 
     Route::get('activity', 'ActivityController@index');
