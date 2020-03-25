@@ -14,9 +14,9 @@ class CreateTransfersTable extends Migration
     public function up()
     {
         Schema::create('transfers', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id')->unique();
             $table->unsignedBigInteger('branch_id');
-            $table->string('reference_no')->nullable();
+            $table->unsignedBigInteger('product_id')->nullable();
             $table->double('shipping_charge')->nullable();
             $table->string('from_location');
             $table->string('to_location');
@@ -24,9 +24,8 @@ class CreateTransfersTable extends Migration
             $table->text('description')->nullable();
             $table->timestamps();
 
-            $table->foreign('branch_id')->references('id')->on('branches')
-                                            ->onDelete('cascade')
-                                            ->onUpdate('cascade');
+            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('set null');                                  
         });
     }
 

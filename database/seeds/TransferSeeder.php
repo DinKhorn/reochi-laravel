@@ -23,13 +23,13 @@ class TransferSeeder extends Seeder
         // $id = IdGenerator::generate(['table' => 'transfers', 'field' => 'reference_no', 'length' => 11, 'prefix' => 'ST/' . date('Y')]);
 
 
-        foreach(range(1, 5) as $i) {
+        foreach(range(1, 3) as $i) {
         	Transfer::create([
-        		'branch_id' => \App\Branch::all()->random()->id,
-        		// 'reference_no' => $id,
+        		'branch_id'     => \App\Branch::all()->random()->id,
+                'product_id'    => \App\Product::all()->random()->id,
         		'from_location' => $faker->company,
-        		'to_location' => $faker->company,
-        		'status' => $faker->randomElement(['Pending', 'Sent', 'Completed']),
+        		'to_location'   => $faker->company,
+        		'status'        => $faker->randomElement(['Pending', 'Sent', 'Completed']),
         	]);
         }
     }

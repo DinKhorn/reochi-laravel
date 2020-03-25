@@ -17,7 +17,7 @@ class CategorySeeder extends Seeder
         // factory(\AppCategory::class, 2)->create();
         $faker = Factory::create();
 
-        foreach(range(1 , 3) as $i) {
+        foreach(range(1 , 5) as $i) {
             Category::create([
                 'cat_name' => $faker->randomElement(['Fruit', 'Beer', 'Milk']),
                 'description' => $faker->sentence,

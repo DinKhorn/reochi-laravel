@@ -20,7 +20,7 @@ class ProductSeeder extends Seeder
         foreach (range(1,3) as $i) {
             Product::create([
                 'user_id' => \App\User::all()->random()->id,
-                // 'category_id' =>\App\Category::all()->random()->id,
+                'category_id' =>\App\Category::all()->random()->id,
                 'name' => $faker->randomElement(['CaCo', 'DayDay', 'Pepsi']),
                 'active' => $faker->randomElement(['1', '0']),
                 'code' => $faker->randomNumber($nbDigits = NULL, $strict = false),

@@ -14,36 +14,37 @@ class Branch extends Model
     	return $this->belongsTo(\App\User::class);
     }
 
-    // public function purchases()
-    // {
-    // 	return $this->hasMany(\App\Purchase::class);
-    // }
-
     public function transfers()
     {
     	return $this->hasMany(\App\Transfer::class);
-    }
-
-    public function return_sales()
-    {
-        return $this->hasMany(\App\ReturnSale::class);
-    }
-
-    public function return_purchases()
-    {
-        return $this->hasMany(\App\ReturnPurchase::class);
-
-    }
-    public function sales()
-    {
-        return $this->hasMany(\App\Sale::class);
-    }
-    public function quotations()
-    {
-        return $this->hasMany(\App\Quotation::class);
     }
     public function supplier()
     {
        return $this->hasMany(\App\Supplier::class);
     }
+
+    // public function purchases()
+    // {
+    // 	return $this->hasMany(\App\Purchase::class);
+    // }
+
+    // public function return_sales()
+    // {
+    //     return $this->hasMany(\App\ReturnSale::class);
+    // }
+
+    // public function return_purchases()
+    // {
+    //     return $this->hasMany(\App\ReturnPurchase::class);
+
+    // }
+    // public function sales()
+    // {
+    //     return $this->hasMany(\App\Sale::class);
+    // }
+    // public function quotations()
+    // {
+    //     return $this->hasMany(\App\Quotation::class);
+    // }
+    
 }

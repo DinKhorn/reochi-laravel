@@ -69,7 +69,7 @@ class TransferController extends Controller
 
         $transfer = new Transfer();
         $transfer->branch_id = auth()->user()->id;
-        $transfer->reference_no = 'ST' . Carbon::now()->format('Y') . '/' . str_pad($count + 1, 4, '0', STR_PAD_LEFT);
+        $transfer->product_id= auth()->user()->id;
         $transfer->from_location = $request->input('from_location');
         $transfer->to_location = $request->input('to_location');
         $transfer->status = $request->input('status');
