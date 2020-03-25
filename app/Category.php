@@ -7,16 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     protected $fillable = [
-        'id','category','description'
+        'cat_name','description'
     ];
 
-    // public function user()
-    // {
-    // 	return $this->belongsTo(\App\User::class);
-    // }
-    public function product()
+    public function products()
     {
-        return $this->belongsTo(\App\Product::class);
+        return $this->hasMany(\App\Product::class);
     }
 
 }

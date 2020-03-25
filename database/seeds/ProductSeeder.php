@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 
 use App\Product;
-
+use App\Category;
 use Faker\Factory;
 
 class ProductSeeder extends Seeder
@@ -17,12 +17,10 @@ class ProductSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        // Product::truncate();
-
         foreach (range(1,3) as $i) {
             Product::create([
                 'user_id' => \App\User::all()->random()->id,
-                // 'brand_id' => \App\Brand::all()->random()->id,
+                // 'category_id' =>\App\Category::all()->random()->id,
                 'name' => $faker->randomElement(['CaCo', 'DayDay', 'Pepsi']),
                 'active' => $faker->randomElement(['1', '0']),
                 'code' => $faker->randomNumber($nbDigits = NULL, $strict = false),
