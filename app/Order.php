@@ -9,8 +9,17 @@ class Order extends Model
 {
     protected $tablename='orders';
     protected $fillable = [
-            'reference_no','outlet_id','location_id','order_status','payment_status', 'note', 
-            'sub_total', 'total', 'due_amount', 'created_by', 'updated_by'
+            'reference_no',
+            'outlet_id',
+            'location_id',
+            'order_status',
+            'payment_status', 
+            'note', 
+            'sub_total', 
+            'total', 
+            'due_amount', 
+            'created_by', 
+            'updated_by'
         ];
 
 	// protected $fillable = [

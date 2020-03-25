@@ -11,7 +11,7 @@ class OrderController extends Controller
     public function index(){
         $itemsPerPage = empty(request('itemsPerPage')) ? 5 : (int)request('itemsPerPage');
 
-        $orders = Order::orderBy('id', 'desc')
+        $orders = Order::orderBy('id', 'asc')
                         ->with(['outlet','order_by','location'])
                         ->paginate($itemsPerPage);
 
@@ -19,7 +19,6 @@ class OrderController extends Controller
     }
 
     public function store(Request $request){
-        
         $product_items = [];    
         $total = 0;
         $user_id=\Auth::user()->id;
@@ -54,8 +53,8 @@ class OrderController extends Controller
         $order->reference_no='order-'. date('Ymd-') . date('His') . str_pad($count + 1, 4, '0', STR_PAD_LEFT);
         $order->outlet_id=$request->outlet_name['id'];
         $order->location_id=$request->location['id'];
-        $order->order_status=$request->order_status;
-        $order->payment_status=$request->payment_status;
+        // $order->order_status=$request->order_status;
+        // $order->payment_status=$request->payment_status;
         $order->note=$request->description;
         $order->sub_total=$total;
         $order->due_amount=0;
@@ -76,7 +75,7 @@ class OrderController extends Controller
                         ->with(['order_detail' => function($q){
                             $q->with('product');
                         }])->findOrFail($id);
-
+        $order->items = $order->order_detail;            
         return response()->json(['order', $order]);
     }
 }

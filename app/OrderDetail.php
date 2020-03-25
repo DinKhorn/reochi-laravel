@@ -8,8 +8,15 @@ class OrderDetail extends Model
 {
     protected $tablename='orders';
     protected $fillable = [
-            'order_id', 'product_id', 
-            'quantity', 'unit_price', 'discount','sub_amount','amount', 'created_by', 'updated_by'
+            'order_id', 
+            'product_id', 
+            'quantity', 
+            'unit_price', 
+            'discount',
+            'sub_amount',
+            'amount', 
+            'created_by', 
+            'updated_by'
         ];
 
     public function product(){
