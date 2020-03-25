@@ -31,12 +31,12 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            'category' => 'required',
+            'cat_name' => 'required',
             'description' => 'nullable',
         ]);
 
         $categories = new Category();
-        $categories->category = $request->input('category');
+        $categories->cat_name = $request->input('cat_name');
         $categories->description = $request->input('description');
         $categories->save();
 
@@ -66,12 +66,12 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $validateData = $request->validate([
-            'category' => 'required',
+            'cat_name' => 'required',
             'description' => 'nullable',
         ]);
 
         $categories = Category::findOrFail($id);
-        $categories->category = $request->input('category');
+        $categories->cat_name = $request->input('cat_name');
         $categories->description = $request->input('description');
         $categories->save();
 

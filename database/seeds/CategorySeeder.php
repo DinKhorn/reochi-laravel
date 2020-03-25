@@ -19,8 +19,8 @@ class CategorySeeder extends Seeder
 
         foreach(range(1 , 3) as $i) {
             Category::create([
-                'category' => $faker->randomElement(['Fruit', 'Beer', 'Milk']),
-                'description' => $faker->text,
+                'cat_name' => $faker->randomElement(['Fruit', 'Beer', 'Milk']),
+                'description' => $faker->sentence,
             ]);
         }
     }

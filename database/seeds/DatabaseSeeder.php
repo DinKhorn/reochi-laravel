@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
             QuotationTableSeeder::class,
             ReturnSaleTableSeeder::class,
             ReturnPurchaseTableSeeder::class,
+            CategorySeeder::class,
         ]);
     }
 }
