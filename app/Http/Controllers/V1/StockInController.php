@@ -3,18 +3,41 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 use App\StockIn;
+use App\Exports\StockInExport;
 use Illuminate\Http\Request;
 
 class StockInController extends Controller
 {
 
-    public function index(){
+    public function export_csv()
+    {
+        return Excel::download(new StockInExport, 'stock-in.xlsx');
+    }
+
+    public function export_pdf()
+    {
+        return Excel::download(new StockInExport, 'stock-in.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
+    }
+
+    public function index(Request $request){
         $itemsPerPage = empty(request('itemsPerPage')) ? 5 : (int)request('itemsPerPage');
 
         $stock_in = StockIn::orderBy('id', 'desc')
-                        ->with(['created_by','supplier'])
-                        ->paginate($itemsPerPage);
+                        ->with(['created_by','supplier']);
+                        
+
+        if($request->search){
+            $search = '%'.$request->search.'%';
+            $stock_in->where(function($q) use ($search) {
+                $q->where('reference_no', 'LIKE',$search)
+                    // ->orWhere('supplier_id->name','LIKE',$search)
+                    ->orWhere('created_by','LIKE',$search);
+            });
+        }
+
+        $stock_in=$stock_in->paginate($itemsPerPage);
 
         return response()->json(['stock_in' => $stock_in]);  
     }
