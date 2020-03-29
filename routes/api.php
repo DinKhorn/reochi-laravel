@@ -47,6 +47,7 @@ Route::group(['middleware' => 'auth:api', 'prefix' => 'v1', 'namespace' => 'V1']
         'stock-out' => 'StockOutController',
         'category' => 'CategoryController',
         'salesman' => 'SalesmanController',
+        'delivery-man' => 'DeliverymanController',
     ]);
 
     Route::get('activity', 'ActivityController@index');
@@ -84,6 +85,10 @@ Route::get('outlet/export-pdf', 'V1\OutletController@export_pdf');
 // Salesman
 Route::get('salesman/export-csv', 'V1\SalesmanController@export_csv');
 Route::get('salesman/export-pdf', 'V1\SalesmanController@export_pdf');
+
+// Delivery Man
+Route::get('deliveryman/export-csv', 'V1\DeliveryManController@export_csv');
+Route::get('deliveryman/export-pdf', 'V1\DeliveryManController@export_pdf');
 
 // Stockin
 Route::get('stockin/export-csv', 'V1\StockInController@export_csv');
