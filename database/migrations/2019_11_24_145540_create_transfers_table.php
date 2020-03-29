@@ -20,6 +20,7 @@ class CreateTransfersTable extends Migration
             $table->double('shipping_charge')->nullable();
             $table->string('from_location');
             $table->string('to_location');
+            $table->string('reference_no')->nullable();
             $table->string('status')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();

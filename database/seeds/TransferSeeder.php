@@ -27,6 +27,7 @@ class TransferSeeder extends Seeder
         	Transfer::create([
         		'branch_id'     => \App\Branch::all()->random()->id,
                 'product_id'    => \App\Product::all()->random()->id,
+                'reference_no'  => 'PR'.date('Y') .'000'. $i,
         		'from_location' => $faker->company,
         		'to_location'   => $faker->company,
         		'status'        => $faker->randomElement(['Pending', 'Sent', 'Completed']),
