@@ -72,36 +72,47 @@ class RolePermissionTableSeeder extends Seeder
             );
         endforeach;
 
-        // Super Admin
-        // $superAdmin = Role::where('name', 'superAdmin')->first();
-        // $superAdmin->syncPermissions([
-        //     'view admin', 'add admin', 'edit admin', 'delete admin', 
-        //     'view users', 'add users', 'edit users', 'delete users', 
-        //     'view sales', 'add sales', 'import sales', 'edit sales', 'delete sales',
-        //     'view website', 'add website', 'edit website', 'delete website',
-        //     'view product', 'add product', 'edit product', 'delete product', 'import product',
-        //     'view purchase', 'add purchase', 'edit purchase', 'delete purchase', 'import purchase',
-        //     'view expense', 'add expense', 'edit expense', 'import expense', 'delete expense',
-        //     'view quotation', 'add quotation', 'edit quotation',
-        //     'view transfer', 'add transfer', 'edit transfer',
-        //     'view employee', 'add employee', 'edit employee', 'delete employee',
-        //     'view account', 'add account', 'edit account', 'delete account', 'import account',
-        //     'view customer', 'add customer', 'edit customer', 'delete customer', 'import customer',
-        //     'view biller', 'add biller', 'edit biller', 'delete biller', 'import biller',
-        //     'view supplier', 'add supplier', 'edit supplier', 'delete supplier', 'import supplier',
-        //     'summary report', 'product report', 'daily sale report', 'monthly sale report',
-        //     'daily purchase report', 'monthly purchase report', 'sale report', 'payment report',
-        //     'purchase report', 'warehouse report', 'product qty alert', 'user report', 
-        //     'customer report', 'supplier report', 'due report',
-        //     'support', 'payment log',
-        //     'add withdraw method', 'view withdraw method', 'edit withdraw method', 
-        //     'delete withdraw method', 
-        //     'charge commission',
-        //     'return sales', 'return purchases', 'pos'
-        // ]);
+    //    Super Admin
+        $superAdmin = Role::where('name', 'superAdmin')->first();
+        $superAdmin->syncPermissions([
+            'view admin', 'add admin', 'edit admin', 'delete admin', 
+            'view dashboard',
+            'view users', 'add users', 'edit users', 'delete users', 
+            'view saleman', 'add saleman', 'import saleman', 'edit saleman', 'delete saleman',
+            'view website', 'add website', 'edit website', 'delete website',
+            'view product', 'add product', 'edit product', 'delete product', 'import product',
+            'view location', 'add location', 'edit location', 'delete location', 'import location',
+            'view outlet', 'add outlet', 'edit outlet', 'delete outlet', 'import outlet',
+            'view order', 'add order', 'edit order', 'delete order',
+            'view transfer', 'add transfer', 'edit transfer',
+            'view role', 'add role', 'edit role', 'delete role',
+            'view supplier', 'add supplier', 'edit supplier', 'delete supplier', 'import supplier',
+            // 'view users', 'add users', 'edit users', 'delete users', 
+            // 'view sales', 'add sales', 'import sales', 'edit sales', 'delete sales',
+            // 'view website', 'add website', 'edit website', 'delete website',
+            // 'view product', 'add product', 'edit product', 'delete product', 'import product',
+            // 'view purchase', 'add purchase', 'edit purchase', 'delete purchase', 'import purchase',
+            // 'view expense', 'add expense', 'edit expense', 'import expense', 'delete expense',
+            // 'view quotation', 'add quotation', 'edit quotation',
+            // 'view transfer', 'add transfer', 'edit transfer',
+            // 'view employee', 'add employee', 'edit employee', 'delete employee',
+            // 'view account', 'add account', 'edit account', 'delete account', 'import account',
+            // 'view customer', 'add customer', 'edit customer', 'delete customer', 'import customer',
+            // 'view biller', 'add biller', 'edit biller', 'delete biller', 'import biller',
+            // 'view supplier', 'add supplier', 'edit supplier', 'delete supplier', 'import supplier',
+            // 'summary report', 'product report', 'daily sale report', 'monthly sale report',
+            // 'daily purchase report', 'monthly purchase report', 'sale report', 'payment report',
+            // 'purchase report', 'warehouse report', 'product qty alert', 'user report', 
+            // 'customer report', 'supplier report', 'due report',
+            // 'support', 'payment log',
+            // 'add withdraw method', 'view withdraw method', 'edit withdraw method', 
+            // 'delete withdraw method', 
+            // 'charge commission',
+            // 'return sales', 'return purchases', 'pos'
+        ]);
 
-        // $SuperAdmin              = User::where('name', 'superAdmin')->first();
-        // $SuperAdmin->assignRole('superAdmin');
+        $SuperAdmin              = User::where('name', 'superAdmin')->first();
+        $SuperAdmin->assignRole('superAdmin');
 
         $administrator      = Role::where('name', 'administrator')->first();
         $administrator->syncPermissions([
