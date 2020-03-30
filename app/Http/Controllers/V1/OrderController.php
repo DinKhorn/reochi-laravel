@@ -78,4 +78,49 @@ class OrderController extends Controller
         $order->items = $order->order_detail;            
         return response()->json(['order', $order]);
     }
+
+    public function update(Request $request, $id){
+        $product_items = [];    
+        $total = 0;
+        $user_id=\Auth::user()->id;
+        $count = Order::whereDay('created_at', date('d'))->count();
+
+        if(isset($request->items)) {
+            foreach($request->items as $item) {
+               $sub_amount =  $item['quantity'] * $item['unit_price'];
+
+                if($item['discount']>0){
+                    $amount= $sub_amount * (1 - $item['discount']/100);
+                }else{
+                    $amount= $sub_amount;
+                }
+
+                $total+=$amount;
+
+               $product_items[]=[
+                   'product_id'     => $item['id'],
+                   'quantity'       => $item['quantity'],
+                   'unit_price'     => $item['unit_price'],
+                   'discount'       => $item['discount'],
+                   'sub_amount'     => $sub_amount,
+                   'amount'         => $amount,
+                   'created_by'     =>$user_id,
+                   'updated_by'     =>$user_id,
+               ];
+            }
+        }
+        $order=Order::findOrFail($id);
+        $order->outlet_id=$request->outlet_name['id'];
+        $order->location_id=$request->location['id'];
+        $order->note=$request->description;
+        $order->sub_total=$total;
+        $order->due_amount=0;
+        $order->total=$total-0;
+        $order->updated_by=$user_id;
+        $order->save();
+        if(count($product_items)>0){
+            $order->order_detail()->delete();
+            $order->order_detail()->createMany($product_items);
+        }
+    }
 }

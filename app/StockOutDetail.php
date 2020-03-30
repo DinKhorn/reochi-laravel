@@ -8,7 +8,7 @@ class StockOutDetail extends Model
 {
     protected $tablename='stock_out_details';
     protected $fillable=[
-        'stock_in_id',
+        'stock_out_id',
         'product_id',
         'quantity',
         'unit_price',

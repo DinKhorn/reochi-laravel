@@ -27,7 +27,7 @@ class StockOut extends Model
     }
 
     public function deliver(){
-        return $this->belongsTo(\App\Supplier::class,'supplier_id','id');
+        return $this->belongsTo(\App\Supplier::class,'deliver_id','id');
     }
 
     public function salesman(){
