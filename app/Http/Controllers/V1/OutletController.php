@@ -127,7 +127,7 @@ class OutletController extends Controller
             'phone' => 'required',
             'status' => 'required',
         ]);
-        
+
         $outlet=Outlet::findOrFail($id);
         $outlet->name=$request->name;       
         $outlet->location=$request->location['name'];
