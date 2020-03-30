@@ -69,10 +69,11 @@ class TransferController extends Controller
 
         $transfer = new Transfer();
         $transfer->branch_id = auth()->user()->id;
-        $transfer->product_id= auth()->user()->id;
+        // $transfer->product_id= auth()->user()->id;
         $transfer->from_location = $request->input('from_location');
         $transfer->to_location = $request->input('to_location');
         $transfer->status = $request->input('status');
+        $transfer->reference_no = $request->reference_no;
         $transfer->shipping_charge = $request->input('shipping_charge');
         $transfer->save();
 
@@ -98,7 +99,9 @@ class TransferController extends Controller
      */
     public function show($id)
     {
-        //
+        $transfer = Transfer::findOrFail($id);
+
+        return response()->json(['tra$transfer' => $transfer]);
     }
 
     /**
@@ -110,7 +113,25 @@ class TransferController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $transfer = Tran::findOrFail($id); 
+        // $supplier->purchase_id = auth()->user()->id;
+        $transfer->branch_id = auth()->user()->id;
+        // $transfer->product_id= auth()->user()->id;
+        $transfer->from_location = $request->input('from_location');
+        $transfer->to_location = $request->input('to_location');
+        $transfer->status = $request->input('status');
+        $transfer->reference_no = $request->reference_no;
+        $transfer->shipping_charge = $request->input('shipping_charge');
+        $transfer->save();
+
+        if($request->products) {
+            foreach($request->products as $product) {
+                $transfer->products()->attach($product['id'], [
+                    'unit_price' => $product['price'],
+                    'quantity' => $product['quantity'],
+                ]);
+            }
+        }
     }
 
     /**

@@ -154,7 +154,7 @@ class ReturnPurchaseController extends Controller
         $returnpurchase->staff_des = $request->staff_des;
         $returnpurchase->save();
 
-         // Save Associate Relationship
+        // Save Associate Relationship
         $returnpurchase->branch()->associate($request->branch['id'])->save();
         $returnpurchase->supplier()->associate($request->supplier['id'])->save();
         $returnpurchase->account()->associate($request->account['id'])->save();

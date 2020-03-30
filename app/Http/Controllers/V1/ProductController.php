@@ -44,6 +44,7 @@ class ProductController extends Controller
             'unit' => 'required|numeric',
             'price' => 'required|numeric',
             'category_id' => 'nullable',
+            'image'=> 'nullable',
         ]);
 
         // Save Image
@@ -98,7 +99,7 @@ class ProductController extends Controller
 
             $product = new Product();
             $product->user_id = auth()->user()->id;
-            $product->category_id = $request->category['id'];
+            $product->category_id = auth()->user()->id;
             $product->name = $request->name;
             $product->code = $request->code;
             $product->description = $request->description;
@@ -108,14 +109,14 @@ class ProductController extends Controller
 
             // $product->category()->associate($request->category['id'])->save();
 
-            // $order = new Order();
-            // $order->discount = $request->discount; 
-            // $order->save();
+        //     // $order = new Order();
+        //     // $order->discount = $request->discount; 
+        //     // $order->save();
 
-            // $product->orders()->attach($order, [
-            //     'unit_price' => $request->get('unit_price', 0),
-            //     'quantity' => $request->get('quantity', 1),
-            // ]); 
+        //     // $product->orders()->attach($order, [
+        //     //     'unit_price' => $request->get('unit_price', 0),
+        //     //     'quantity' => $request->get('quantity', 1),
+        //     // ]); 
         }
         
 
@@ -153,6 +154,7 @@ class ProductController extends Controller
             'unit' => 'required|integer',
             'price' => 'required|numeric',
             'category_id' => 'nullable',
+            'image'=> 'nullable',
         ]);
 
 
@@ -209,7 +211,7 @@ class ProductController extends Controller
 
             $product = Product::findOrFail($id);
             $product->user_id = auth()->user()->id;
-            $product->category_id = $request->category['id'];
+            $product->category_id = auth()->user()->id;
             $product->name = $request->name;
             $product->code = $request->code;
             $product->description = $request->description;
