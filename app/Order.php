@@ -54,7 +54,7 @@ class Order extends Model
     }
 
     public function location(){
-        return $this->belongsTo(\App\Outlet::class,'location_id');
+        return $this->belongsTo(\App\Branch::class,'location_id','id');
     }
 
     public function getCreatedAtAttribute($date)
