@@ -46,7 +46,7 @@ class Order extends Model
     }
 
     public function outlet(){
-        return $this->belongsTo(\App\Outlet::class,'outlet_id');
+        return $this->belongsTo(\App\Outlet::class,'outlet_id','id');
     }
 
     public function order_by(){

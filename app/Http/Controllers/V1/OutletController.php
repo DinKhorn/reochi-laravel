@@ -71,11 +71,17 @@ class OutletController extends Controller
             'name' => 'required',
             'location' => 'required',
             'phone' => 'required',
-            'create_by' => 'required',
             'status' => 'required',
         ]);
-        
-        Outlet::create($request->all());
+
+        $outlet=new Outlet;
+        $outlet->name=$request->name;
+        $outlet->location=$request->location['name'];
+        $outlet->phone=$request->phone;
+        $outlet->create_by=auth()->user()->name;
+        $outlet->status=$request->status;
+        $outlet->save();
+        // Outlet::create($request->all());
 
         return response()->json([
             'created' => true,
@@ -115,16 +121,20 @@ class OutletController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->validate([
+        $request->validate([
             'name' => 'required',
             'location' => 'required',
             'phone' => 'required',
-            'create_by' => 'required',
             'status' => 'required',
         ]);
-
+        
         $outlet=Outlet::findOrFail($id);
-        $outlet->update($request->all());
+        $outlet->name=$request->name;       
+        $outlet->location=$request->location['name'];
+        $outlet->phone=$request->phone;
+        $outlet->create_by=$request->create_by;
+        $outlet->status=$request->status;
+        $outlet->save();
 
         return response()->json([
             'updated' => true,
