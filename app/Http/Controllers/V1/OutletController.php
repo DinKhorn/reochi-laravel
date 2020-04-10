@@ -39,7 +39,7 @@ class OutletController extends Controller
                 $q->where('location', 'LIKE',$search)
                     ->orWhere('name','LIKE',$search)
                     ->orWhere('phone','LIKE',$search)
-                    ->orWhere('create_by','LIKE',$search)
+                    // ->orWhere('create_by','LIKE',$search)
                     ->orWhere('status','LIKE',$search);
             });
         }
@@ -72,15 +72,47 @@ class OutletController extends Controller
             'location' => 'required',
             'phone' => 'required',
             'status' => 'required',
+            'image'=> 'nullable',
         ]);
 
-        $outlet=new Outlet;
-        $outlet->name=$request->name;
-        $outlet->location=$request->location['name'];
-        $outlet->phone=$request->phone;
-        $outlet->create_by=auth()->user()->name;
-        $outlet->status=$request->status;
-        $outlet->save();
+        if($request->get('image')) {
+            $exploded = explode(',', $request->image);
+            $decode = base64_decode($exploded[1]);
+
+            if(str_contains($exploded[0], 'jpeg')) {
+                $extension = 'jpeg';
+            }
+            else {
+                $extension = 'png';
+            }
+
+            $fileName = str_random() . '.' . $extension;
+            $path = public_path() . '/image/' . $fileName;
+            
+            file_put_contents($path, $decode);
+
+            $img = \Image::make($path)->resize(null, 90, function($constraint) {
+                $constraint->aspectRatio();
+            });
+
+            $img->save(public_path('/image/' . $fileName));
+
+            $outlet=new Outlet;
+            $outlet->name=$request->name;
+            $outlet->location=$request->location;
+            $outlet->phone=$request->phone;
+            // $outlet->create_by=auth()->user()->name;
+            $outlet->status=$request->status;
+            $outlet->save();
+        }else{
+            $outlet=new Outlet;
+            $outlet->name=$request->name;
+            $outlet->location=$request->location;
+            $outlet->phone=$request->phone;
+            // $outlet->create_by=auth()->user()->name;
+            $outlet->status=$request->status;
+            $outlet->save();
+        }
         // Outlet::create($request->all());
 
         return response()->json([
@@ -126,15 +158,49 @@ class OutletController extends Controller
             'location' => 'required',
             'phone' => 'required',
             'status' => 'required',
+            'image'=> 'nullable',
         ]);
 
-        $outlet=Outlet::findOrFail($id);
-        $outlet->name=$request->name;       
-        $outlet->location=$request->location['name'];
-        $outlet->phone=$request->phone;
-        $outlet->create_by=$request->create_by;
-        $outlet->status=$request->status;
-        $outlet->save();
+        if($request->get('image')) {
+            $exploded = explode(',', $request->image);
+            $decode = base64_decode($exploded[1]);
+
+            if(str_contains($exploded[0], 'jpeg')) {
+                $extension = 'jpeg';
+            }
+            else {
+                $extension = 'png';
+            }
+
+            $fileName = str_random() . '.' . $extension;
+            $path = public_path() . '/image/' . $fileName;
+            
+            file_put_contents($path, $decode);
+
+            $img = \Image::make($path)->resize(null, 90, function($constraint) {
+                $constraint->aspectRatio();
+            });
+
+            $img->save(public_path('/image/' . $fileName));
+
+            $outlet=Outlet::findOrFail($id);
+            $outlet->name=$request->name;       
+            $outlet->location=$request->location;
+            $outlet->phone=$request->phone;
+            // $outlet->create_by=$request->create_by;
+            $outlet->status=$request->status;
+            $outlet->save();
+        }else{
+            $outlet=Outlet::findOrFail($id);
+            $outlet->name=$request->name;       
+            $outlet->location=$request->location;
+            $outlet->phone=$request->phone;
+            // $outlet->create_by=$request->create_by;
+            $outlet->status=$request->status;
+            $outlet->save();
+        }
+
+        
 
         return response()->json([
             'updated' => true,

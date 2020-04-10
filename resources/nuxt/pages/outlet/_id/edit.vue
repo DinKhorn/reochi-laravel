@@ -20,23 +20,18 @@
 						</validation-provider>
 					</v-col>
 					<v-col sm="6" cols="12">
-						<label class="font-weight-bold" for="location">
+						<label class="font-weight-bold" for="phone">
 							Location
 							<span class="red--text">*</span>
 						</label>
-						<validation-provider name="Location" rules="required" v-slot="{ errors }">
-							<!-- <v-text-field outlined solo dense label="Location" v-model="form.location"></v-text-field> -->
-							<v-autocomplete
-								item-value="name"
-								item-text="name"
-								solo
-								outlined
-								dense
-								label="Business Location"
-								return-object
-								v-model="form.location"
-								:items="locations"
-							></v-autocomplete>
+						<validation-provider name="location" rules="required" v-slot="{ errors }">
+							<v-text-field 
+							outlined 
+							solo 
+							dense 
+							label="Location" 
+							v-model="form.location">
+							</v-text-field>
 							<span class="red--text">{{ errors[0] }}</span>
 						</validation-provider>
 					</v-col>
@@ -60,6 +55,20 @@
 							<span class="red--text">{{ errors[0] }}</span>
 						</validation-provider>
 					</v-col>
+					<v-col sm="12" cols="12">
+						<label class="font-weight-bold" for="image">Outlet Image</label>
+						<div v-if="url" class="preview--image">
+							<img :src="form.image" class="img-responsive" height="300" />
+						</div>
+						<input type="file" @change="uploadImage($event)" class="product--image" />
+					</v-col>
+					<!-- <v-col sm="12" cols="12">
+						<label class="font-weight-bold" for="branch">Location Image</label>
+						<div v-if="url" class="preview--image">
+							<img :src="form.branch" class="img-responsive" height="300" />
+						</div>
+						<input type="file" @change="uploadImage($event)" class="product--image" />
+					</v-col> -->
 				</v-row>
 			</ValidationObserver>
 			<v-card-actions class="px-5">
@@ -76,7 +85,7 @@
 	export default {
 		name: "EditOutlet",
 		created() {
-			this.fetchLocation();
+			// this.fetchLocation();
 			this.setData();
 		},
 
@@ -91,17 +100,17 @@
 		},
 
 		methods: {
-			fetchLocation() {
-				this.$axios
-					.$get(`api/location`)
-					.then(res => {
-						this.locations = res.locations.data;
-						// console.log(res);
-					})
-					.catch(err => {
-						console.log(err.response);
-					});
-			},
+			// fetchLocation() {
+			// 	this.$axios
+			// 		.$get(`api/location`)
+			// 		.then(res => {
+			// 			this.locations = res.locations.data;
+			// 			// console.log(res);
+			// 		})
+			// 		.catch(err => {
+			// 			console.log(err.response);
+			// 		});
+			// },
 
 			setData() {
 				this.$axios
@@ -121,7 +130,8 @@
 						name: this.form.name,
 						location: this.form.location,
 						phone: this.form.phone,
-						create_by: this.form.create_by,
+						image: this.form.image,
+						// branch: this.form.branch,
 						status: this.form.status
 					})
 					.then(res => {
@@ -132,6 +142,18 @@
 					.catch(err => {
 						this.$refs.form.validate(err.response.data.errors);
 					});
+			},
+			uploadImage(e) {
+				const images = e.target.files[0];
+				const reader = new FileReader();
+
+				reader.readAsDataURL(images);
+				reader.onload = e => {
+					this.form.image = e.target.result;
+					console.log(this.form);
+				};
+
+				this.url = URL.createObjectURL(images);
 			}
 		}
 	};
