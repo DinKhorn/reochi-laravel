@@ -29,6 +29,10 @@ class RolePermissionTableSeeder extends Seeder
 
         $permissions        = [
             'view dashboard',
+            'view reward',
+            'add reward',
+            'edit reward',
+            'delete reward',
             'view administrator', 'add administrator', 'edit administrator', 'delete administrator', 
             'view users', 'add users', 'edit users', 'delete users', 
             'view product', 'add product', 'edit product', 'delete product', 'import product',
@@ -70,6 +74,10 @@ class RolePermissionTableSeeder extends Seeder
         $superadmin->syncPermissions([
             'view administrator', 'add administrator', 'edit administrator', 'delete administrator',
             'view dashboard',
+            'view reward',
+            'add reward',
+            'edit reward',
+            'delete reward',
             'view users', 'add users', 'edit users', 'delete users', 
             'view product', 'add product', 'edit product', 'delete product', 'import product',
             'view transfer', 'add transfer', 'edit transfer',
@@ -104,7 +112,10 @@ class RolePermissionTableSeeder extends Seeder
             'view dashboard',
             'view users', 'add users', 'edit users', 'delete users', 
             'view saleman', 'add saleman', 'import saleman', 'edit saleman', 'delete saleman',
-            
+            'view reward',
+            'add reward',
+            'edit reward',
+            'delete reward',
             'view location', 'add location', 'edit location', 'delete location', 'import location',
             'view outlet', 'add outlet', 'edit outlet', 'delete outlet', 'import outlet',
             'view transfer', 'add transfer', 'edit transfer',

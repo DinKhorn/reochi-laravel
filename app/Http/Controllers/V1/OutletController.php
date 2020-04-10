@@ -7,9 +7,20 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Outlet;
 use App\Exports\OutletsExport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Utilities\Util;
 
 class OutletController extends Controller
 {
+
+    protected $util;
+
+    public function __construct(Util $util)
+    {
+        $this->util = $util;
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -29,18 +40,18 @@ class OutletController extends Controller
 
     public function index(Request $request)
     {
-        $itemsPerPage = empty(request('itemsPerPage')) ? 5 : (int)request('itemsPerPage');
+        $itemsPerPage = empty(request('itemsPerPage')) ? 5 : (int) request('itemsPerPage');
         $outlets = Outlet::orderBy('id', 'asc');
-                           
 
-        if($request->search){
-            $search = '%'.$request->search.'%';
-            $outlets->where(function($q) use ($search) {
-                $q->where('location', 'LIKE',$search)
-                    ->orWhere('name','LIKE',$search)
-                    ->orWhere('phone','LIKE',$search)
+
+        if ($request->search) {
+            $search = '%' . $request->search . '%';
+            $outlets->where(function ($q) use ($search) {
+                $q->where('location', 'LIKE', $search)
+                    ->orWhere('name', 'LIKE', $search)
+                    ->orWhere('phone', 'LIKE', $search)
                     // ->orWhere('create_by','LIKE',$search)
-                    ->orWhere('status','LIKE',$search);
+                    ->orWhere('status', 'LIKE', $search);
             });
         }
 
@@ -72,52 +83,74 @@ class OutletController extends Controller
             'location' => 'required',
             'phone' => 'required',
             'status' => 'required',
-            'image'=> 'nullable',
+            'image' => 'nullable',
         ]);
 
-        if($request->get('image')) {
-            $exploded = explode(',', $request->image);
-            $decode = base64_decode($exploded[1]);
+        DB::beginTransaction();
 
-            if(str_contains($exploded[0], 'jpeg')) {
-                $extension = 'jpeg';
+        try {
+
+            $data       = $request->all();
+
+            if ($request->has('image_url')) {
+                $data['image']    = $this->util->uploadImage($request, 'image_url', config('constants.product_img_path'));
             }
-            else {
-                $extension = 'png';
-            }
+            $outlet     = Outlet::create($data);
 
-            $fileName = str_random() . '.' . $extension;
-            $path = public_path() . '/image/' . $fileName;
-            
-            file_put_contents($path, $decode);
+            DB::commit();
+            return response()->json([
+                'created'   => true,
+            ]);
+        } catch (\Exception $e) {
 
-            $img = \Image::make($path)->resize(null, 90, function($constraint) {
-                $constraint->aspectRatio();
-            });
-
-            $img->save(public_path('/image/' . $fileName));
-
-            $outlet=new Outlet;
-            $outlet->name=$request->name;
-            $outlet->location=$request->location;
-            $outlet->phone=$request->phone;
-            // $outlet->create_by=auth()->user()->name;
-            $outlet->status=$request->status;
-            $outlet->save();
-        }else{
-            $outlet=new Outlet;
-            $outlet->name=$request->name;
-            $outlet->location=$request->location;
-            $outlet->phone=$request->phone;
-            // $outlet->create_by=auth()->user()->name;
-            $outlet->status=$request->status;
-            $outlet->save();
+            DB::rollback();
+            return response()->json([
+                'created'   => false,
+            ]);
         }
-        // Outlet::create($request->all());
 
-        return response()->json([
-            'created' => true,
-        ]);
+        // if ($request->get('image')) {
+        //     $exploded = explode(',', $request->image);
+        //     $decode = base64_decode($exploded[1]);
+
+        //     if (str_contains($exploded[0], 'jpeg')) {
+        //         $extension = 'jpeg';
+        //     } else {
+        //         $extension = 'png';
+        //     }
+
+        //     $fileName = str_random() . '.' . $extension;
+        //     $path = public_path() . '/image/' . $fileName;
+
+        //     file_put_contents($path, $decode);
+
+        //     $img = \Image::make($path)->resize(null, 90, function ($constraint) {
+        //         $constraint->aspectRatio();
+        //     });
+
+        //     $img->save(public_path('/image/' . $fileName));
+
+        //     $outlet = new Outlet;
+        //     $outlet->name = $request->name;
+        //     $outlet->location = $request->location;
+        //     $outlet->phone = $request->phone;
+        //     // $outlet->create_by=auth()->user()->name;
+        //     $outlet->status = $request->status;
+        //     $outlet->save();
+        // } else {
+        //     $outlet = new Outlet;
+        //     $outlet->name = $request->name;
+        //     $outlet->location = $request->location;
+        //     $outlet->phone = $request->phone;
+        //     // $outlet->create_by=auth()->user()->name;
+        //     $outlet->status = $request->status;
+        //     $outlet->save();
+        // }
+        // // Outlet::create($request->all());
+
+        // return response()->json([
+        //     'created' => true,
+        // ]);
     }
 
     /**
@@ -158,53 +191,82 @@ class OutletController extends Controller
             'location' => 'required',
             'phone' => 'required',
             'status' => 'required',
-            'image'=> 'nullable',
+            'image' => 'nullable',
         ]);
 
-        if($request->get('image')) {
-            $exploded = explode(',', $request->image);
-            $decode = base64_decode($exploded[1]);
 
-            if(str_contains($exploded[0], 'jpeg')) {
-                $extension = 'jpeg';
+        DB::beginTransaction();
+
+        try {
+
+            $outlet   = Outlet::findOrFail($id);
+
+            $data       = $request->all();
+
+            if ($request->has('image_url')) {
+                $data['image']    = $this->util->uploadImage($request, 'image_url', config('constants.product_img_path'));
             }
-            else {
-                $extension = 'png';
-            }
 
-            $fileName = str_random() . '.' . $extension;
-            $path = public_path() . '/image/' . $fileName;
-            
-            file_put_contents($path, $decode);
+            $outlet->update($data);
 
-            $img = \Image::make($path)->resize(null, 90, function($constraint) {
-                $constraint->aspectRatio();
-            });
+            DB::commit();
+            return response()->json([
+                'updated'   => true,
+            ]);
+        } catch (\Exception $e) {
 
-            $img->save(public_path('/image/' . $fileName));
-
-            $outlet=Outlet::findOrFail($id);
-            $outlet->name=$request->name;       
-            $outlet->location=$request->location;
-            $outlet->phone=$request->phone;
-            // $outlet->create_by=$request->create_by;
-            $outlet->status=$request->status;
-            $outlet->save();
-        }else{
-            $outlet=Outlet::findOrFail($id);
-            $outlet->name=$request->name;       
-            $outlet->location=$request->location;
-            $outlet->phone=$request->phone;
-            // $outlet->create_by=$request->create_by;
-            $outlet->status=$request->status;
-            $outlet->save();
+            DB::rollback();
+            return response()->json([
+                'updated'   => false,
+            ]);
         }
 
-        
 
-        return response()->json([
-            'updated' => true,
-        ]);
+
+        // if($request->get('image')) {
+        //     $exploded = explode(',', $request->image);
+        //     $decode = base64_decode($exploded[1]);
+
+        //     if(str_contains($exploded[0], 'jpeg')) {
+        //         $extension = 'jpeg';
+        //     }
+        //     else {
+        //         $extension = 'png';
+        //     }
+
+        //     $fileName = str_random() . '.' . $extension;
+        //     $path = public_path() . '/image/' . $fileName;
+
+        //     file_put_contents($path, $decode);
+
+        //     $img = \Image::make($path)->resize(null, 90, function($constraint) {
+        //         $constraint->aspectRatio();
+        //     });
+
+        //     $img->save(public_path('/image/' . $fileName));
+
+        //     $outlet=Outlet::findOrFail($id);
+        //     $outlet->name=$request->name;       
+        //     $outlet->location=$request->location;
+        //     $outlet->phone=$request->phone;
+        //     // $outlet->create_by=$request->create_by;
+        //     $outlet->status=$request->status;
+        //     $outlet->save();
+        // }else{
+        //     $outlet=Outlet::findOrFail($id);
+        //     $outlet->name=$request->name;       
+        //     $outlet->location=$request->location;
+        //     $outlet->phone=$request->phone;
+        //     // $outlet->create_by=$request->create_by;
+        //     $outlet->status=$request->status;
+        //     $outlet->save();
+        // }
+
+
+
+        // return response()->json([
+        //     'updated' => true,
+        // ]);
     }
 
     /**

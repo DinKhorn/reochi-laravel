@@ -80,8 +80,8 @@
 						<tr>
 							<td>{{ item.created_at }}</td>
 							<td>{{ item.reference_no }}</td>
-							<td>{{ item.outlet.name }}</td>
-							<td>{{ item.location.name }}</td>
+							<td>{{ item.outlet ? item.outlet.name : null }}</td>
+							<td>{{ item.location ? item.location.name : null }}</td>
 							<!-- <td>{{ item.order_status }}</td> -->
 							<td v-if="item.order_status === 'New'">
 								<span class="new">{{ item.order_status }}</span>
@@ -103,7 +103,7 @@
 							</td>
 							<td>USD {{ item.total }}</td>
 							<td>USD {{ item.due_amount }}</td>
-							<td>{{ item.order_by.name }}</td>
+							<td>{{ item.order_by ? item.order_by.name : null }}</td>
 							<td>
 								<v-tooltip top v-permission="'view order'">
 									<template v-slot:activator="{ on }">
@@ -139,153 +139,153 @@
 </template>
 
 <script>
-	export default {
-		name: "OrderList",
-		watch: {
-			name: {
-				handler() {
-					this.getItems();
-				}
-			},
-
-			email: {
-				handler() {
-					this.getItems();
-				}
-			},
-
-			term: {
-				handler() {
-					this.searchItems();
-				}
-			},
-			immediate: true
-		},
-		created() {
-			this.fetchData();
-		},
-
-		data() {
-			return {
-				date: new Date().toISOString().substr(0, 10),
-				menu1: false,
-				modal: false,
-				menu2: false,
-				filter_by: ["Salesman", "Admin"],
-				dialog: false,
-				items: [],
-				form: {},
-				headers: [
-					{
-						text: "Date",
-						value: "created_at"
-					},
-					{
-						text: "Reference No.",
-						value: "reference_no"
-					},
-					{
-						text: "Outlet Name",
-						value: "outlet.name"
-					},
-					{
-						text: "Location",
-						value: "location"
-					},
-					{
-						text: "Order Status",
-						value: "order_status"
-					},
-					{
-						text: "Payment Status",
-						value: "payment_status"
-					},
-					{
-						text: "Total",
-						value: "total"
-					},
-					{
-						text: "Payment Due",
-						value: "due_amount"
-					},
-					{
-						text: "Order By",
-						value: "order_by.name"
-					},
-					{
-						text: "Action",
-						value: "action",
-						sortable: false
-					}
-				],
-				role: ["saleman", "administator"]
-			};
-		},
-		methods: {
-			fetchData() {
-				this.$axios
-					.$get(`/api/order`)
-					.then(res => {
-						this.items = res.orders.data;
-						console.log(this.items);
-					})
-					.catch(err => {
-						console.log(err.response);
-					});
-			},
-			editItem(id) {
-				this.$router.push(`/order/${id}/edit`);
-			},
-
-			viewItem(id) {
-				this.$router.push(`/order/${id}/detail`);
+export default {
+	name: "OrderList",
+	watch: {
+		name: {
+			handler() {
+				this.getItems();
 			}
+		},
+
+		email: {
+			handler() {
+				this.getItems();
+			}
+		},
+
+		term: {
+			handler() {
+				this.searchItems();
+			}
+		},
+		immediate: true
+	},
+	created() {
+		this.fetchData();
+	},
+
+	data() {
+		return {
+			date: new Date().toISOString().substr(0, 10),
+			menu1: false,
+			modal: false,
+			menu2: false,
+			filter_by: ["Salesman", "Admin"],
+			dialog: false,
+			items: [],
+			form: {},
+			headers: [
+				{
+					text: "Date",
+					value: "created_at"
+				},
+				{
+					text: "Reference No.",
+					value: "reference_no"
+				},
+				{
+					text: "Outlet Name",
+					value: "outlet.name"
+				},
+				{
+					text: "Location",
+					value: "location"
+				},
+				{
+					text: "Order Status",
+					value: "order_status"
+				},
+				{
+					text: "Payment Status",
+					value: "payment_status"
+				},
+				{
+					text: "Total",
+					value: "total"
+				},
+				{
+					text: "Payment Due",
+					value: "due_amount"
+				},
+				{
+					text: "Order By",
+					value: "order_by.name"
+				},
+				{
+					text: "Action",
+					value: "action",
+					sortable: false
+				}
+			],
+			role: ["saleman", "administator"]
+		};
+	},
+	methods: {
+		fetchData() {
+			this.$axios
+				.$get(`/api/order`)
+				.then(res => {
+					this.items = res.orders.data;
+					console.log(this.items);
+				})
+				.catch(err => {
+					console.log(err.response);
+				});
+		},
+		editItem(id) {
+			this.$router.push(`/order/${id}/edit`);
+		},
+
+		viewItem(id) {
+			this.$router.push(`/order/${id}/detail`);
 		}
-	};
+	}
+};
 </script>
 <style lang="scss">
-	.paid {
-		background-color: #36d160;
-		padding: 5px 7px 5px 7px;
-		border-radius: 5px;
-	}
+.paid {
+	background-color: #36d160;
+	padding: 5px 7px 5px 7px;
+	border-radius: 5px;
+}
 
-	.due {
-		background-color: #e0355a;
-		padding: 5px 7px 5px 7px;
-		border-radius: 5px;
-		color: #fff;
-	}
+.due {
+	background-color: #e0355a;
+	padding: 5px 7px 5px 7px;
+	border-radius: 5px;
+	color: #fff;
+}
 
-	.new {
-		background-color: #da5521;
-		padding: 5px 7px 5px 7px;
-		border-radius: 5px;
-	}
+.new {
+	background-color: #da5521;
+	padding: 5px 7px 5px 7px;
+	border-radius: 5px;
+}
 
-	.pending {
-		background-color: #4635e0;
-		padding: 5px 7px 5px 7px;
-		border-radius: 5px;
-		color: #fff;
-	}
+.pending {
+	background-color: #4635e0;
+	padding: 5px 7px 5px 7px;
+	border-radius: 5px;
+	color: #fff;
+}
 
-	.accepted {
-		background-color: #d5e035;
-		padding: 5px 7px 5px 7px;
-		border-radius: 5px;
-	}
+.accepted {
+	background-color: #d5e035;
+	padding: 5px 7px 5px 7px;
+	border-radius: 5px;
+}
 
-	.received {
-		background-color: #3bd136;
-		padding: 5px 7px 5px 7px;
-		border-radius: 5px;
-		color: #fff;
-	}
-	.cancel {
-		background-color: #d42b2b;
-		padding: 5px 7px 5px 7px;
-		border-radius: 5px;
-		color: #fff;
-	}
+.received {
+	background-color: #3bd136;
+	padding: 5px 7px 5px 7px;
+	border-radius: 5px;
+	color: #fff;
+}
+.cancel {
+	background-color: #d42b2b;
+	padding: 5px 7px 5px 7px;
+	border-radius: 5px;
+	color: #fff;
+}
 </style>

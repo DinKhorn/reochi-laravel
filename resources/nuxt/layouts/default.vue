@@ -96,414 +96,467 @@
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				toggle: true,
-				menus: [
-					{
-						name: "Dashboard",
-						icon: "mdi-view-dashboard",
-						to: "/",
-						permission: "view dashboard"
-					},
-					{
-						name: "User Management",
-						to: "/user/user-list",
-						icon: "mdi-account-group",
-						permission: "view users",
-						children: [
-							{
-								name: "User",
-								to: "/user/user-list",
-								icon: "mdi-account",
-								permission: "view users"
-							},
-							{
-								name: "Salesman",
-								to: "/salesman/list",
-								icon: "mdi-account-tie",
-								permission: "view salesman"
-							},
+export default {
+	data() {
+		return {
+			toggle: true,
+			menus: [
+				{
+					name: "Dashboard",
+					icon: "mdi-view-dashboard",
+					to: "/",
+					permission: "view dashboard"
+				},
+				{
+					name: "User Management",
+					to: "/user/user-list",
+					icon: "mdi-account-group",
+					permission: "view users",
+					children: [
+						{
+							name: "User",
+							to: "/user/user-list",
+							icon: "mdi-account",
+							permission: "view users"
+						},
+						{
+							name: "Salesman",
+							to: "/salesman/list",
+							icon: "mdi-account-tie",
+							permission: "view salesman"
+						},
 
-							// {
-							// 	name: "Delivery Man",
-							// 	to: "/delivery-man/list",
-							// 	icon: "mdi-account-multiple",
-							// 	permission: "view supplier"
-							// },
-							{
-								name: "Role",
-								icon: "mdi-account-cog",
-								to: "/role/role-list",
-								permission: "view role"
-							}
-						]
-					},
-					{
-						name: "Outlet",
-						to: "/outlet/outlet-list",
-						icon: "mdi-storefront",
-						permission: "view outlet"
-						// children: [
-						// 	{
-						// 		name: "Outlet List",
-						// 		to: "/outlet/outlet-list",
-						// 		icon: "mdi-view-list",
-						// 		permission: "view outlet"
-						// 	},
-						// 	{
-						// 		name: "Add Outlet",
-						// 		to: "/outlet/add-outlet",
-						// 		icon: "mdi-plus-circle",
-						// 		permission: "add outlet"
-						// 	}
-						// ]
-					},
-					{
-						name: "Product",
-						to: "/product/product-list",
-						icon: "mdi-cube",
-						permission: "view product",
-						children: [
-							{
-								name: "Product List",
-								to: "/product/product-list",
-								icon: "mdi-view-list",
-								permission: "view product"
-							},
-							// {
-							// 	name: "Add Product",
-							// 	to: "/product/add-product",
-							// 	icon: "mdi-plus-circle",
-							// 	permission: "add product"
-							// },
-							{
-								name: "Product Category",
-								to: "/product/category/",
-								icon: "mdi-apps",
-								permission: "view category"
-							}
-							// {
-							// 	name: "Add Category",
-							// 	to: "/product/category/add_category",
-							// 	icon: "mdi-plus-circle",
-							// 	permission: "view product"
-							// }
-						]
-					},
+						// {
+						// 	name: "Delivery Man",
+						// 	to: "/delivery-man/list",
+						// 	icon: "mdi-account-multiple",
+						// 	permission: "view supplier"
+						// },
+						{
+							name: "Role",
+							icon: "mdi-account-cog",
+							to: "/role/role-list",
+							permission: "view role"
+						}
+					]
+				},
+				{
+					name: "Outlet",
+					to: "/outlet",
+					icon: "mdi-storefront",
+					permission: "view outlet"
+					// children: [
+					// 	{
+					// 		name: "Outlet List",
+					// 		to: "/outlet/outlet-list",
+					// 		icon: "mdi-view-list",
+					// 		permission: "view outlet"
+					// 	},
+					// 	{
+					// 		name: "Add Outlet",
+					// 		to: "/outlet/add-outlet",
+					// 		icon: "mdi-plus-circle",
+					// 		permission: "add outlet"
+					// 	}
+					// ]
+				},
+				{
+					name: "Product",
+					to: "/product/product-list",
+					icon: "mdi-cube",
+					permission: "view product",
+					children: [
+						{
+							name: "Product List",
+							to: "/product/product-list",
+							icon: "mdi-view-list",
+							permission: "view product"
+						},
+						// {
+						// 	name: "Add Product",
+						// 	to: "/product/add-product",
+						// 	icon: "mdi-plus-circle",
+						// 	permission: "add product"
+						// },
+						{
+							name: "Product Category",
+							to: "/product/category/",
+							icon: "mdi-apps",
+							permission: "view category"
+						}
+						// {
+						// 	name: "Add Category",
+						// 	to: "/product/category/add_category",
+						// 	icon: "mdi-plus-circle",
+						// 	permission: "view product"
+						// }
+					]
+				},
 
-					{
-						name: "Order",
-						to: "/order/order-list",
-						icon: "mdi-cart-arrow-down",
-						permission: "view order"
-						// children: [
-						// 	{
-						// 		name: "Order List",
-						// 		to: "/order/order-list",
-						// 		icon: "mdi-view-list",
-						// 		permission: "view order"
-						// 	},
-						// 	{
-						// 		name: "Add Order",
-						// 		to: "/order/add-order",
-						// 		icon: "mdi-plus-circle",
-						// 		permission: "add order"
-						// 	}
-						// ]
-					},
-					{
-						name: "Stock Management",
-						// to: "/stock-in/list",
-						icon: "mdi-clipboard-arrow-down-outline",
-						permission: "view stock-in",
-						children: [
-							{
-								name: "Stock In",
-								to: "/stock-in/list",
-								icon: "mdi-clipboard-arrow-down-outline",
-								permission: "view stock-in"
-								// children: [
-								// 	{
-								// 		name: "Stockin List",
-								// 		to: "/stock-in/list",
-								// 		icon: "mdi-view-list",
-								// 		permission: "view stock-in"
-								// 	},
-								// 	// {
-								// 	// 	name: "Add Stock",
-								// 	// 	to: "/stock-in/add",
-								// 	// 	icon: "mdi-plus-circle",
-								// 	// 	permission: "view stock-in"
-								// 	// }
-								// ]
-							},
-							{
-								name: "Stock-out",
-								to: "/stock-out/list",
-								icon: "mdi-clipboard-arrow-up-outline",
-								permission: "view stock-out"
-								// children: [
-								// 	{
-								// 		name: "Stock-out List",
-								// 		to: "/stock-out/list",
-								// 		icon: "mdi-view-list",
-								// 		permission: "view stock-out"
-								// 	},
-								// 	// {
-								// 	// 	name: "Cut Stock",
-								// 	// 	to: "/stock-out/add",
-								// 	// 	icon: "mdi-plus-circle",
-								// 	// 	permission: "view stock-out"
-								// 	// }
-								// ]
-							}
-						]
-					},
+				{
+					name: "Order",
+					to: "/order/order-list",
+					icon: "mdi-cart-arrow-down",
+					permission: "view order"
+				},
+				{
+					name: "Stock Management",
+					// to: "/stock-in/list",
+					icon: "mdi-clipboard-arrow-down-outline",
+					permission: "view stock-in",
+					children: [
+						{
+							name: "Stock In",
+							to: "/stock-in/list",
+							icon: "mdi-clipboard-arrow-down-outline",
+							permission: "view stock-in"
+						},
+						{
+							name: "Stock-out",
+							to: "/stock-out/list",
+							icon: "mdi-clipboard-arrow-up-outline",
+							permission: "view stock-out"
+							
+						}
+					]
+				},
 
-					{
-						name: "Transfer",
-						to: "/transfer/transfers",
-						icon: "mdi-transfer-right",
-						permission: "view transfer"
-						// children: [
-						// 	{
-						// 		name: "Transfer List",
-						// 		icon: "mdi-view-list",
-						// 		to: "/transfer/transfers",
-						// 		permission: "view transfer"
-						// 	},
-						// 	// {
-						// 	// 	name: "Add Transfer",
-						// 	// 	icon: "mdi-plus-circle",
-						// 	// 	to: "/transfer/add_transfer",
-						// 	// 	permission: "add transfer"
-						// 	// }
-						// 	// {
-						// 	// 	name: "Import Transfer By CSV",
-						// 	// 	icon: "mdi-file-import",
-						// 	// 	to: "/transfer/import_transfer",
-						// 	// 	permission: "view transfer"
-						// 	// }
-						// ]
-					},
-					{
-						name: " Seller Location",
-						to: "/location/",
-						icon: "mdi-google-maps",
-						permission: "view location"
-						// children: [
-						// 	{
-						// 		name: "Location List",
-						// 		to: "/location/",
-						// 		icon: "mdi-view-list",
-						// 		permission: "view location"
-						// 	},
-						// 	{
-						// 		name: "Add Location",
-						// 		to: "/location/create",
-						// 		icon: "mdi-plus-circle",
-						// 		permission: "view location"
-						// 	}
-						// ]
-					},
-					{
-						name: "Supplier",
-						to: "/supplier/",
-						icon: "mdi-account-multiple",
-						permission: "view supplier"
-					},
-					{
-						name: "System Settings",
-						icon: "mdi-cogs",
-						to: "/setting/system-settings",
-						permission: "view setting"
-					}
-				]
-			};
-		},
-
-		methods: {
-			logout() {
-				this.$auth.logout();
-			}
-		},
-
-		computed: {
-			user() {
-				return this.$store.state.auth ? this.$store.state.auth.user : {};
-			}
-		},
-
-		// async created() {
-		// 	const { data: permissions } = await this.$axios.get(
-		// 		"/api/auth/permissions"
-		// 	);
-		// 	const { data: roles } = await this.$axios.get("/api/auth/roles");
-
-		// 	this.$laravel.setPermissions(permissions);
-		// 	this.$laravel.setRoles(roles);
-		// 	console.log(roles, permissions);
-		// }
-
-		created() {
-			if (this.user.role[0] === "superAdmin") {
-				this.$laravel.setPermissions([
-					"view administrator", "add administrator", "edit administrator", "delete administrator",
-					"view dashboard",
-					"view users", "add users", "edit users", "delete users", 
-					"view product", "add product", "edit product", "delete product", "import product",
-					"view transfer", "add transfer", "edit transfer",
-					"view supplier", "add supplier", "edit supplier", "delete supplier", "import supplier",
-					"view saleman","add saleman","import saleman","edit saleman","delete saleman",
-					"view stock-in","add stock-in","edit stock-in","delete stock-in",
-					"view stock-out","add stock-out","edit stock-out","delete stock-out",
-					"view order","add order","edit order","delete order",
-					"view location","add location","edit location","delete location","import location",
-					"view role","add role","edit role","delete role","import role",
-					"view setting","add setting","edit setting","delete setting",
-					"view outlet","add outlet","edit outlet","delete outlet","import outlet",
-					"view finance",
-					"add finance",
-					"edit finance",
-					"delete finance",
-					"view salemanager",
-					"add salemanager",
-					"edit salemanager",
-					"delete salemanager",
-					"view salesupervisor",
-					"add salesupervisor",
-					"edit salesupervisor",
-					"delete salesupervisor",
-				]);
-			}
-			if (this.user.role[0] === "administrator") {
-				this.$laravel.setPermissions([
-					"view dashboard",
-					"view users", "add users", "edit users", "delete users", 
-					"view saleman", "add saleman", "import saleman", "edit saleman", "delete saleman",
-					"view product", "add product", "edit product", "delete product", "import product",
-					"view location", "add location", "edit location", "delete location", "import location",
-					"view outlet", "add outlet", "edit outlet", "delete outlet", "import outlet",
-					"view order", "add order", "edit order", "delete order",
-					"view transfer", "add transfer", "edit transfer",
-					"view role", "add role", "edit role", "delete role",
-					"view stock-in","add stock-in","edit stock-in","delete stock-in",
-					"view stock-out","add stock-out","edit stock-out","delete stock-out",
-					"view setting","add setting","edit setting","delete setting",
-					"view supplier", "add supplier", "edit supplier", "delete supplier", "import supplier",
-					"view finance",
-					"add finance",
-					"edit finance",
-					"delete finance",
-					"view salemanager",
-					"add salemanager",
-					"edit salemanager",
-					"delete salemanager",
-					"view salesupervisor",
-					"add salesupervisor",
-					"edit salesupervisor",
-					"delete salesupervisor",
+				{
+					name: "Transfer",
+					to: "/transfer/transfers",
+					icon: "mdi-transfer-right",
+					permission: "view transfer"
 					
-				]);
-			}
+				},
+				{
+					name: " Seller Location",
+					to: "/location/",
+					icon: "mdi-google-maps",
+					permission: "view location"
+					
+				},
+				{
+					name: "Reward",
+					icon: "mdi-gift",
+					to: "/reward",
+					permission: "view reward"
+				},
+				{
+					name: "Supplier",
+					to: "/supplier/",
+					icon: "mdi-account-multiple",
+					permission: "view supplier"
+				},
+				{
+					name: "System Settings",
+					icon: "mdi-cogs",
+					to: "/setting/system-settings",
+					permission: "view setting"
+				}
+			]
+		};
+	},
 
-			if (this.user.role[0] === "saleman") {
-				this.$laravel.setPermissions([
-					"view dashboard",
-					"view saleman",
-					"add saleman",
-					"edit saleman",
-					"delete saleman",
-					"import saleman",
-					"view outlet",
-					"add outlet",
-					"edit outlet",
-					"delete outlet",
-					"import outlet",
-					"view order",
-					"add order",
-					"edit order",
-					"delete order",
-					"view product",
-					"add product",
-					"edit product",
-					"delete product",
-					"import product"
-					
-				]);
-			}
-
-			if (this.user.role[0] === "finance") {
-				this.$laravel.setPermissions([
-					"view stock-in","add stock-in","edit stock-in","delete stock-in",
-					"view stock-out","add stock-out","edit stock-out","delete stock-out",
-					"view order", "add order", "edit order", "delete order",
-					"view product", "add product", "edit product", "delete product", "import product",
-				]);
-			}
-
-			if (this.user.role[0] === "stockmanager") {
-				this.$laravel.setPermissions([
-					"view dashboard",
-					"view stock-in",
-					"add stock-in",
-					"edit stock-in",
-					"delete stock-in",
-					"view stock-out",
-					"add stock-out",
-					"edit stock-out",
-					"delete stock-out",
-					"view product",
-					"add product",
-					"edit product",
-					"delete product",
-					"import product"
-					
-				]);
-			}
-			if (this.user.role[0] === "salemanager") {
-				this.$laravel.setPermissions([
-					"view stock-in","add stock-in","edit stock-in","delete stock-in",
-					"view stock-out","add stock-out","edit stock-out","delete stock-out",
-					"view order", "add order", "edit order", "delete order",
-					"view product", "add product", "edit product", "delete product", "import product",
-					
-				]);
-			}
-			if (this.user.role[0] === "salesupervisor") {
-				this.$laravel.setPermissions([
-					"view order", "add order", "edit order", "delete order",
-					"view product", "add product", "edit product", "delete product", "import product",
-					
-				]);
-			}
+	methods: {
+		logout() {
+			this.$auth.logout();
 		}
-	};
+	},
+
+	computed: {
+		user() {
+			return this.$store.state.auth ? this.$store.state.auth.user : {};
+		}
+	},
+
+	// async created() {
+	// 	const { data: permissions } = await this.$axios.get(
+	// 		"/api/auth/permissions"
+	// 	);
+	// 	const { data: roles } = await this.$axios.get("/api/auth/roles");
+
+	// 	this.$laravel.setPermissions(permissions);
+	// 	this.$laravel.setRoles(roles);
+	// 	console.log(roles, permissions);
+	// }
+
+	created() {
+		if (this.user.role[0] === "superAdmin") {
+			this.$laravel.setPermissions([
+				"view administrator",
+				"add administrator",
+				"edit administrator",
+				"delete administrator",
+				"view reward",
+				"add reward",
+				"edit reward",
+				"delete reward",
+				"view dashboard",
+				"view users",
+				"add users",
+				"edit users",
+				"delete users",
+				"view product",
+				"add product",
+				"edit product",
+				"delete product",
+				"import product",
+				"view transfer",
+				"add transfer",
+				"edit transfer",
+				"view supplier",
+				"add supplier",
+				"edit supplier",
+				"delete supplier",
+				"import supplier",
+				"view saleman",
+				"add saleman",
+				"import saleman",
+				"edit saleman",
+				"delete saleman",
+				"view stock-in",
+				"add stock-in",
+				"edit stock-in",
+				"delete stock-in",
+				"view stock-out",
+				"add stock-out",
+				"edit stock-out",
+				"delete stock-out",
+				"view order",
+				"add order",
+				"edit order",
+				"delete order",
+				"view location",
+				"add location",
+				"edit location",
+				"delete location",
+				"import location",
+				"view role",
+				"add role",
+				"edit role",
+				"delete role",
+				"import role",
+				"view setting",
+				"add setting",
+				"edit setting",
+				"delete setting",
+				"view outlet",
+				"add outlet",
+				"edit outlet",
+				"delete outlet",
+				"import outlet",
+				"view finance",
+				"add finance",
+				"edit finance",
+				"delete finance",
+				"view salemanager",
+				"add salemanager",
+				"edit salemanager",
+				"delete salemanager",
+				"view salesupervisor",
+				"add salesupervisor",
+				"edit salesupervisor",
+				"delete salesupervisor"
+			]);
+		}
+		if (this.user.role[0] === "administrator") {
+			this.$laravel.setPermissions([
+				"view dashboard",
+				"view users",
+				"add users",
+				"edit users",
+				"delete users",
+				"view saleman",
+				"add saleman",
+				"import saleman",
+				"edit saleman",
+				"delete saleman",
+				"view product",
+				"add product",
+				"edit product",
+				"delete product",
+				"import product",
+				"view location",
+				"add location",
+				"edit location",
+				"delete location",
+				"import location",
+				"view outlet",
+				"add outlet",
+				"edit outlet",
+				"delete outlet",
+				"import outlet",
+				"view order",
+				"add order",
+				"edit order",
+				"delete order",
+				"view transfer",
+				"add transfer",
+				"edit transfer",
+				"view role",
+				"add role",
+				"edit role",
+				"delete role",
+				"view stock-in",
+				"add stock-in",
+				"edit stock-in",
+				"delete stock-in",
+				"view stock-out",
+				"add stock-out",
+				"edit stock-out",
+				"delete stock-out",
+				"view reward",
+				"add reward",
+				"edit reward",
+				"delete reward",
+				"view setting",
+				"add setting",
+				"edit setting",
+				"delete setting",
+				"view supplier",
+				"add supplier",
+				"edit supplier",
+				"delete supplier",
+				"import supplier",
+				"view finance",
+				"add finance",
+				"edit finance",
+				"delete finance",
+				"view salemanager",
+				"add salemanager",
+				"edit salemanager",
+				"delete salemanager",
+				"view salesupervisor",
+				"add salesupervisor",
+				"edit salesupervisor",
+				"delete salesupervisor"
+			]);
+		}
+
+		if (this.user.role[0] === "saleman") {
+			this.$laravel.setPermissions([
+				"view dashboard",
+				"view saleman",
+				"add saleman",
+				"edit saleman",
+				"delete saleman",
+				"import saleman",
+				"view outlet",
+				"add outlet",
+				"edit outlet",
+				"delete outlet",
+				"import outlet",
+				"view order",
+				"add order",
+				"edit order",
+				"delete order",
+				"view product",
+				"add product",
+				"edit product",
+				"delete product",
+				"import product"
+			]);
+		}
+
+		if (this.user.role[0] === "finance") {
+			this.$laravel.setPermissions([
+				"view stock-in",
+				"add stock-in",
+				"edit stock-in",
+				"delete stock-in",
+				"view stock-out",
+				"add stock-out",
+				"edit stock-out",
+				"delete stock-out",
+				"view order",
+				"add order",
+				"edit order",
+				"delete order",
+				"view product",
+				"add product",
+				"edit product",
+				"delete product",
+				"import product"
+			]);
+		}
+
+		if (this.user.role[0] === "stockmanager") {
+			this.$laravel.setPermissions([
+				"view dashboard",
+				"view stock-in",
+				"add stock-in",
+				"edit stock-in",
+				"delete stock-in",
+				"view stock-out",
+				"add stock-out",
+				"edit stock-out",
+				"delete stock-out",
+				"view product",
+				"add product",
+				"edit product",
+				"delete product",
+				"import product"
+			]);
+		}
+		if (this.user.role[0] === "salemanager") {
+			this.$laravel.setPermissions([
+				"view stock-in",
+				"add stock-in",
+				"edit stock-in",
+				"delete stock-in",
+				"view stock-out",
+				"add stock-out",
+				"edit stock-out",
+				"delete stock-out",
+				"view order",
+				"add order",
+				"edit order",
+				"delete order",
+				"view product",
+				"add product",
+				"edit product",
+				"delete product",
+				"import product"
+			]);
+		}
+		if (this.user.role[0] === "salesupervisor") {
+			this.$laravel.setPermissions([
+				"view order",
+				"add order",
+				"edit order",
+				"delete order",
+				"view product",
+				"add product",
+				"edit product",
+				"delete product",
+				"import product"
+			]);
+		}
+	}
+};
 </script>
 
 
 <style lang="scss">
-	.color {
-		background: #34495e;
-		&--item {
-			background: #455a64;
-		}
+.color {
+	background: #34495e;
+	&--item {
+		background: #455a64;
 	}
+}
 
-	.subMenu {
-		padding-left: 2em;
-	}
+.subMenu {
+	padding-left: 2em;
+}
 
-	.posLink {
-		display: block;
-		text-decoration: none;
-		padding-top: 7px;
-	}
-	.nuxt--link {
-		display: block;
-		text-decoration: none;
-		color: #fff !important;
-	}
+.posLink {
+	display: block;
+	text-decoration: none;
+	padding-top: 7px;
+}
+.nuxt--link {
+	display: block;
+	text-decoration: none;
+	color: #fff !important;
+}
 </style>
