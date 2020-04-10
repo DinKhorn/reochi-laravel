@@ -65,9 +65,9 @@
 						.loginWith("password_grant", {
 							data: {
 								grant_type: "password",
-								client_id: process.env.PASSPORT_PASSWORD_GRANT_ID,
+								client_id: 3,
 								client_secret:
-									process.env.PASSPORT_PASSWORD_GRANT_SECRET,
+									"WHZjhui2BFDQE2QJuNvXHSXizQ5Pz9VK8W4FbkYf",
 								scope: "*",
 								username: this.auth.username,
 								password: this.auth.password
