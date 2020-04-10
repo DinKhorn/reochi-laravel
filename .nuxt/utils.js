@@ -150,11 +150,7 @@ export async function setContext (app, context) {
       payload: context.payload,
       error: context.error,
       base: '/',
-<<<<<<< HEAD
-      env: {}
-=======
-      env: {"APP_URL":"http://127.0.0.1:8000/","APP_API_URL":"http://127.0.0.1:8000/api/v1","APP_OAUTH_URL":"http://127.0.0.1:8000/oauth/","PASSPORT_PASSWORD_GRANT_ID":"2","PASSPORT_PASSWORD_GRANT_SECRET":"F3hORWGGJEOMqNGashAABhjoS2sMujHy8AZdp8bB"}
->>>>>>> d4235b6ea4b9e2f5b8efbd993e20506b252ee851
+      env: {"PASSPORT_ID":"2","PASSPORT_KEY":"NSXa3eR49gRvWio07JQfO9dg99N8CQxY47eXMWff"}
     }
     // Only set once
     if (context.req) {
