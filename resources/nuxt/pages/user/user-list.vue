@@ -5,7 +5,10 @@
 				User
 				<span class="caption grey--text mt-2">&nbsp;List</span>
 				<v-spacer></v-spacer>
-				<v-dialog v-model="dialog" max-width="600px">
+				<v-btn class="primary white--text" to="/user/add-user">
+					<v-icon left>mdi-plus-circle</v-icon>Add
+				</v-btn>
+				<!-- <v-dialog v-model="dialog" max-width="600px">
 					<template v-slot:activator="{ on }">
 						<v-btn v-permission="'add users'" v-on="on" class="primary white--text">
 							<v-icon left>mdi-plus-circle</v-icon>Add
@@ -68,12 +71,29 @@
 							</v-spacer>
 						</v-card-actions>
 					</v-card>
-				</v-dialog>
+				</v-dialog>-->
 			</v-card-title>
 			<div class="pa-4">
 				<div class="d-flex justify-space-between">
-					<div>
-						<v-text-field outlined dense solo v-model="term" label="Search"></v-text-field>
+					<div class="col-5 py-0">
+						<div class="row">
+							<v-text-field
+								outlined
+								dense
+								solo
+								v-model="term"
+								label="Search"
+								style="width: 100px !important;padding:0 7px 0 0;"
+							></v-text-field>
+							<v-select
+								outlined
+								dense
+								solo
+								v-model="term"
+								label="Filter By"
+								style="width: 100px !important;padding:0 0 0 7px;"
+							></v-select>
+						</div>
 					</div>
 					<div>
 						<v-btn class="red darken-1">
@@ -89,7 +109,7 @@
 					<template v-slot:item.action="{item}">
 						<v-tooltip top v-permission="'edit users'">
 							<template v-slot:activator="{ on }">
-								<v-btn small icon @click="editItem(item)" color="primary" outlined v-on="on">
+								<v-btn small icon @click="editItem(item.id)" color="primary" outlined v-on="on">
 									<v-icon small>mdi-pencil</v-icon>
 								</v-btn>
 							</template>
@@ -170,20 +190,10 @@
 		methods: {
 			getItems() {
 				this.$axios
-					.$get(`/api/roles`)
-					.then(res => {
-						this.roles = res.role;
-						// console.log(res.role.data);
-					})
-					.catch(err => {
-						console.log(err.response);
-					});
-
-				this.$axios
 					.$get(`/api/user?name=${this.name}&email=${this.email}`)
 					.then(res => {
 						this.items = res.users.data;
-						console.log(res.users.data);
+						// console.log(res.users.data);
 					})
 					.catch(err => {
 						console.log(err.response);
@@ -202,54 +212,54 @@
 					});
 			},
 
-			editItem(item) {
-				this.editedIndex = this.items.indexOf(item);
-				this.form = Object.assign({}, item);
-				this.dialog = true;
-			},
+			// editItem(item) {
+			// 	this.editedIndex = this.items.indexOf(item);
+			// 	this.form = Object.assign({}, item);
+			// 	this.dialog = true;
+			// },
 
-			addUser() {
-				if (this.editedIndex > -1) {
-					this.$axios
-						.$patch(`/api/user/` + this.form.id, {
-							name: this.form.name,
-							email: this.form.email,
-							password: this.form.password
-						})
-						.then(res => {
-							this.getItems();
-							this.closeDialog();
-							this.$toast.info("Succeessfully Updated");
-						})
-						.catch(err => {
-							this.$refs.nameOfObserver.validate(
-								err.response.data.errors
-							);
-						});
-				} else {
-					this.$axios
-						.$post(`/api/user`, this.form)
-						.then(res => {
-							this.form = res;
-							this.getItems();
-							this.$toast.info("Succeessfully Created");
-							this.closeDialog();
-						})
-						.catch(err => {
-							this.$refs.nameOfObserver.validate(
-								err.response.data.errors
-							);
-							console.log(err.response.data.errors);
-						});
-				}
-			},
+			// addUser() {
+			// 	if (this.editedIndex > -1) {
+			// 		this.$axios
+			// 			.$patch(`/api/user/` + this.form.id, {
+			// 				name: this.form.name,
+			// 				email: this.form.email,
+			// 				password: this.form.password
+			// 			})
+			// 			.then(res => {
+			// 				this.getItems();
+			// 				this.closeDialog();
+			// 				this.$toast.info("Succeessfully Updated");
+			// 			})
+			// 			.catch(err => {
+			// 				this.$refs.nameOfObserver.validate(
+			// 					err.response.data.errors
+			// 				);
+			// 			});
+			// 	} else {
+			// 		this.$axios
+			// 			.$post(`/api/user`, this.form)
+			// 			.then(res => {
+			// 				this.form = res;
+			// 				this.getItems();
+			// 				this.$toast.info("Succeessfully Created");
+			// 				this.closeDialog();
+			// 			})
+			// 			.catch(err => {
+			// 				this.$refs.nameOfObserver.validate(
+			// 					err.response.data.errors
+			// 				);
+			// 				console.log(err.response.data.errors);
+			// 			});
+			// 	}
+			// },
 
 			print() {
 				var prtContent = document.getElementById("print");
 				var tr = document.getElementsByTagName("tr");
 				var th = document.getElementsByTagName("th");
 
-				if (th.length > 0) {
+				if (this.items.length > 0) {
 					for (var i = 0; i < tr.length; i++) {
 						tr[i].cells[th.length - 1].style.visibility = "hidden";
 					}
@@ -266,10 +276,14 @@
 				newWin.close();
 			},
 
-			closeDialog() {
-				this.dialog = false;
-				this.editedIndex = -1;
-				this.form = {};
+			// closeDialog() {
+			// 	this.dialog = false;
+			// 	this.editedIndex = -1;
+			// 	this.form = {};
+			// },
+
+			editItem(id) {
+				this.$router.push(`/user/${id}/edit`);
 			},
 
 			deleteItem(item) {

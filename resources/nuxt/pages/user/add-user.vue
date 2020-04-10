@@ -1,7 +1,10 @@
 <template>
 	<v-app class="pa-5">
 		<v-card class="card">
-			<v-card-title class="blue-grey lighten-4">Create User</v-card-title>
+			<v-card-title class="blue-grey lighten-4">
+				User
+				<span class="caption grey--text mt-2">&nbsp;Add</span>
+			</v-card-title>
 			<v-divider></v-divider>
 			<p class="px-5 pt-3 font-italic grey--text">
 				The field labels marked with
@@ -20,8 +23,11 @@
 						</validation-provider>
 					</v-col>
 					<v-col sm="6" cols="12">
-						<label class="font-weight-bold" for="email">Email</label>
-						<validation-provider name="Email" v-slot="{ errors }">
+						<label class="font-weight-bold" for="email">
+							Email
+							<span class="red--text">*</span>
+						</label>
+						<validation-provider name="Email" rules="required|email" v-slot="{ errors }">
 							<v-text-field outlined solo dense label="Email" v-model="form.email"></v-text-field>
 							<span class="red--text">{{ errors[0] }}</span>
 						</validation-provider>
@@ -31,15 +37,16 @@
 							Password
 							<span class="red--text">*</span>
 						</label>
-						<validation-provider name="Password" rules="required" v-slot="{ errors }">
+						<validation-provider name="Password" rules="required|min:6" v-slot="{ errors }">
 							<v-text-field
 								outlined
 								solo
 								dense
 								label="Password"
 								v-model="form.password"
-								type="password"
-								required
+								:append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
+								:type="show ? 'text' : 'password'"
+								@click:append="show = !show"
 							></v-text-field>
 							<span class="red--text">{{ errors[0] }}</span>
 						</validation-provider>
@@ -85,7 +92,9 @@
 				form: {},
 				items: [],
 				roles: [],
+				show: false,
 				url: null,
+				password: "Password",
 				itemsPerPage: 5
 			};
 		},
@@ -109,11 +118,8 @@
 				this.$axios
 					.$post(`/api/user`, this.form)
 					.then(res => {
-						alert("hi");
-						this.form = res;
-						this.getItems();
 						this.$toast.info("Succeessfully Created");
-						this.closeDialog();
+						this.$router.push(`/user/user-list`);
 					})
 					.catch(err => {
 						console.log(err.response.data.errors);

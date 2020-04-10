@@ -29,21 +29,21 @@ class UserController extends Controller
     }
 
     public function index(Request $request)
-    {   
+    {  
         // $items      = User::with('role')->has('role')->OrderBy('id', 'desc');
-        $items      = User::with('role')->OrderBy('id', 'desc');
+        $items      = User::with('role')->OrderBy('id', 'asc');
       
-        if($request->name) {
-            $items->where(function($q) use ($request) {
-                $q->where('name', 'like', '%' . $request->name . '%');
-            });
-        }
+        // if($request->name) {
+        //     $items->where(function($q) use ($request) {
+        //         $q->where('name', 'like', '%' . $request->name . '%');
+        //     });
+        // }
 
-        if($request->email) {
-            $items->where(function($q) use ($request) {
-                $q->where('email', 'like', '%' . $request->email . '%');
-            });
-        }
+        // if($request->email) {
+        //     $items->where(function($q) use ($request) {
+        //         $q->where('email', 'like', '%' . $request->email . '%');
+        //     });
+        // }
 
         if($request->term){
             $term = '%'.$request->term.'%';
@@ -77,7 +77,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->role_id = $request->role;
+        $user->role_id = $request->role['id'];
         $user->password = Hash::make($request->password);
         $user->save();
 
