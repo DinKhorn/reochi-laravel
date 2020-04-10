@@ -15,22 +15,22 @@ class UsersTableSeeder extends Seeder
 
         $users      = [
             // SuperAdmin
-            // [
-            //     'name'      => "superAdmin",
-            //     "email"     => "superadmin@mail.com",
-            //     "password"  => 'secret',
-            // ],
+            [
+                'name'      => "superadmin",
+                "email"     => "superAdmin@mail.com",
+                "password"  => 'secret',
+            ],
             // Admin
             [
                 'name'      => "administrator",
                 "email"     => "administrator@mail.com",
                 "password"  => 'secret',
             ],
-            // [
-            //     'name'      => "accountant",
-            //     "email"     => "accountant@mail.com",
-            //     "password"  => 'secret',
-            // ],
+            [
+                'name'      => "finance",
+                "email"     => "finance@mail.com",
+                "password"  => 'secret',
+            ],
             [
                 'name'      => "stockmanager",
                 "email"     => "stockManager@mail.com",
@@ -42,25 +42,23 @@ class UsersTableSeeder extends Seeder
                 "password"  => 'secret',
             ],
 
-            // [
-            //     'name'      => "saleman2",
-            //     "email"     => "saleman2@mail.com",
-            //     "password"  => 'secret',
-            // ],
+            [
+                'name'      => "salemanager",
+                "email"     => "salemanager@mail.com",
+                "password"  => 'secret',
+            ],
 
-            // Web Admin
             // [
             //     'name'      => "webAdmin",
             //     "email"     => "webAdmin@mail.com",
             //     "password"  => 'secret',
             // ],
 
-            // SuperVisor
-            // [
-            //     'name'      => "supervisor",
-            //     "email"     => "supervisor@mail.com",
-            //     "password"  => 'secret',
-            // ],
+            [
+                'name'      => "salesupervisor",
+                "email"     => "salesupervisor@mail.com",
+                "password"  => 'secret',
+            ],
             // Member
             [
                 'name'      => "outlet",
