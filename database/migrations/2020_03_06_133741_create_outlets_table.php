@@ -18,7 +18,7 @@ class CreateOutletsTable extends Migration
             $table->string('name');
             $table->text('location');
             $table->string('phone');
-            $table->string('create_by');
+            $table->string('image')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
         });

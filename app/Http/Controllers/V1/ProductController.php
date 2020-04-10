@@ -81,18 +81,7 @@ class ProductController extends Controller
             $product->unit = $request->unit;
             $product->price = $request->price;
             $product->save();
-
-            // $product->category()->associate($request->category['id'])->save();
-
-
-            // $order = new Order();
-            // $order->discount = $request->discount; 
-            // $order->save();
-
-            // $product->orders()->attach($order, [
-            //     'unit_price' => $request->get('unit_price', 0),
-            //     'quantity' => $request->get('quantity', 1),
-            // ]); 
+ 
 
         }
         else {
@@ -106,17 +95,7 @@ class ProductController extends Controller
             $product->unit = $request->unit;
             $product->price = $request->price;
             $product->save();
-
-            // $product->category()->associate($request->category['id'])->save();
-
-        //     // $order = new Order();
-        //     // $order->discount = $request->discount; 
-        //     // $order->save();
-
-        //     // $product->orders()->attach($order, [
-        //     //     'unit_price' => $request->get('unit_price', 0),
-        //     //     'quantity' => $request->get('quantity', 1),
-        //     // ]); 
+ 
         }
         
 
@@ -195,16 +174,6 @@ class ProductController extends Controller
             $product->price = $request->price;
             $product->save();
 
-            // $product->category()->associate($request->category['id'])->save();
-
-            // $order = new Order();
-            // $order->discount = $request->discount; 
-            // $order->save();
-
-            // $product->orders()->attach($order, [
-            //     'unit_price' => $request->get('unit_price', 0),
-            //     'quantity' => $request->get('quantity', 1),
-            // ]); 
 
         }
         else {
@@ -219,16 +188,6 @@ class ProductController extends Controller
             $product->price = $request->price;
             $product->save();
 
-            // $product->category()->associate($request->category['id'])->save();
-
-            // $order = new Order();
-            // $order->discount = $request->discount; 
-            // $order->save();
-
-            // $product->orders()->attach($order, [
-            //     'unit_price' => $request->get('unit_price', 0),
-            //     'quantity' => $request->get('quantity', 1),
-            // ]); 
         }
 
         return response()->json([

@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Outlet extends Model
 {
     protected $tablename='outlets';
-    protected $fillable=['name','location','phone','create_by','status'];
+    protected $fillable=['name','location','phone','image','status'];
 }

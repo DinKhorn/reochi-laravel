@@ -27,22 +27,34 @@
 				<v-data-table :headers="headers" :items="items" :items-per-page="itemsPerPage" id="print">
 					<template v-slot:item="{ item }">
 						<tr>
+							<td v-if="item.image">
+								<img :src="'http://127.0.0.1:8000/image/' + item.image" class="product-img" />
+							</td>
+							<td v-else>
+								<span>No Image</span>
+							</td>
+							<!-- <td v-if="item.branch">
+								<img :src="'http://127.0.0.1:8000/image/' + item.branch" class="product-img" />
+							</td>
+							<td v-else>
+								<span>No Image</span> -->
+							<!-- </td> -->
 							<td>{{ item.name }}</td>
 							<td>{{ item.location }}</td>
 							<td>{{ item.phone }}</td>
-							<td>{{ item.create_by }}</td>
+							<!-- <td>{{ item.create_by }}</td> -->
 							<td>
 								<span :class="item.status === 'Enable' ? 'enable' : 'disable'">{{ item.status }}</span>
 							</td>
 							<td>
-								<v-tooltip top v-permission="'edit outlet'">
+								<!-- <v-tooltip top v-permission="'edit outlet'">
 									<template v-slot:activator="{ on }">
 										<v-btn icon small @click="viewItem(item.id)" color="cyan" outlined v-on="on">
 											<v-icon small>mdi-eye</v-icon>
 										</v-btn>
 									</template>
 									<span>View</span>
-								</v-tooltip>
+								</v-tooltip> -->
 								<v-tooltip top v-permission="'edit outlet'">
 									<template v-slot:activator="{ on }">
 										<v-btn icon small @click="editItem(item.id)" color="primary" outlined v-on="on">
@@ -100,7 +112,6 @@
 				name: "",
 				location: "",
 				phone: "",
-				create_by: "",
 				status: "",
 				form: {},
 				page: 1,
@@ -111,6 +122,14 @@
 				dialog: false,
 				dialog2: false,
 				headers: [
+					{
+						text: "Photo",
+						sortable: false
+					},
+					// {
+					// 	text: "Branch",
+					// 	sortable: false
+					// },
 					{
 						text: "Name",
 						value: "name"
@@ -123,10 +142,7 @@
 						text: "Contact",
 						value: "phone"
 					},
-					{
-						text: "Create By",
-						value: "create_by"
-					},
+					
 					{
 						text: "Status",
 						value: "status"
@@ -178,13 +194,13 @@
 			deleteItem(item) {
 				if (confirm("Are u sure to delete it?")) {
 					this.$axios
-						.$delete(`api/outlets/` + item.id)
-						.then(res => {
-							this.fetchData();
-						})
-						.catch(err => {
-							console.log(err.response);
-						});
+					.$delete(`api/outlets/` + item.id)
+					.then(res => {
+						this.fetchData();
+					})
+					.catch(err => {
+						console.log(err.response);
+					});
 				}
 			},
 
