@@ -182,6 +182,7 @@ async function createApp (ssrContext) {
 
   // Plugin execution
 
+<<<<<<< HEAD
   if (typeof nuxt_plugin_plugin_79551130 === 'function') {
     await nuxt_plugin_plugin_79551130(app.context, inject)
   }
@@ -196,6 +197,22 @@ async function createApp (ssrContext) {
 
   if (typeof nuxt_plugin_axios_4687462f === 'function') {
     await nuxt_plugin_axios_4687462f(app.context, inject)
+=======
+  if (typeof nuxt_plugin_plugin_2292669f === 'function') {
+    await nuxt_plugin_plugin_2292669f(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_workbox_71829c34 === 'function') {
+    await nuxt_plugin_workbox_71829c34(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_nuxticons_248e8b30 === 'function') {
+    await nuxt_plugin_nuxticons_248e8b30(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_axios_487de5d0 === 'function') {
+    await nuxt_plugin_axios_487de5d0(app.context, inject)
+>>>>>>> 74063d85094b5fabd07fad4201802c19fef2965d
   }
 
   if (process.client && typeof nuxt_plugin_quilleditor_dc45d328 === 'function') {
@@ -230,8 +247,21 @@ async function createApp (ssrContext) {
     await nuxt_plugin_vuefullcalendar_de1442e6(app.context, inject)
   }
 
+<<<<<<< HEAD
   if (typeof nuxt_plugin_plugin_5cef969e === 'function') {
     await nuxt_plugin_plugin_5cef969e(app.context, inject)
+=======
+  if (process.client && typeof nuxt_plugin_vueimageinput_5c12573c === 'function') {
+    await nuxt_plugin_vueimageinput_5c12573c(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_vuebrowsergeolocation_646f1793 === 'function') {
+    await nuxt_plugin_vuebrowsergeolocation_646f1793(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_plugin_ca6e6a72 === 'function') {
+    await nuxt_plugin_plugin_ca6e6a72(app.context, inject)
+>>>>>>> 74063d85094b5fabd07fad4201802c19fef2965d
   }
 
   // If server-side, wait for async component to be resolved first

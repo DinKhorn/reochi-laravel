@@ -194,6 +194,10 @@ export const routerOptions = {
     component: _58e31839,
     name: "match-history"
   }, {
+    path: "/outlet",
+    component: _4cff4f1a,
+    name: "outlet"
+  }, {
     path: "/payment-log",
     component: _00c1a7e8,
     name: "payment-log"

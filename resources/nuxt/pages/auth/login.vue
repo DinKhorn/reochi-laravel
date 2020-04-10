@@ -44,54 +44,53 @@
 </template>
 
 <script>
-	import { async } from "q";
-	export default {
-		layout: "auth",
-		data() {
-			return {
-				loading: false,
-				auth: {
-					username: "administrator@mail.com",
-					password: "secret"
-				}
-			};
-		},
+import { async } from "q";
+export default {
+	layout: "auth",
+	data() {
+		return {
+			loading: false,
+			auth: {
+				username: "administrator@mail.com",
+				password: "secret"
+			}
+		};
+	},
 
-		methods: {
-			async login() {
-				this.loading = true;
-				try {
-					await this.$auth
-						.loginWith("password_grant", {
-							data: {
-								grant_type: "password",
-								client_id: 3,
-								client_secret:
-									"WHZjhui2BFDQE2QJuNvXHSXizQ5Pz9VK8W4FbkYf",
-								scope: "*",
-								username: this.auth.username,
-								password: this.auth.password
-							}
-						})
-						.then(async () => {
-							const { data: permissions } = await this.$axios.get(
-								"/api/auth/permissions"
-							);
-							const { data: roles } = await this.$axios.get(
-								"/api/auth/roles"
-							);
+	methods: {
+		async login() {
+			this.loading = true;
+			try {
+				await this.$auth
+					.loginWith("password_grant", {
+						data: {
+							grant_type: "password",
+							client_id: process.env.PASSPORT_ID,
+							client_secret: process.env.PASSPORT_KEY,
+							scope: "*",
+							username: this.auth.username,
+							password: this.auth.password
+						}
+					})
+					.then(async () => {
+						const { data: permissions } = await this.$axios.get(
+							"/api/auth/permissions"
+						);
+						const { data: roles } = await this.$axios.get(
+							"/api/auth/roles"
+						);
 
-							this.$laravel.setPermissions(permissions);
-							this.$laravel.setRoles(roles);
-							this.loading = false;
+						this.$laravel.setPermissions(permissions);
+						this.$laravel.setRoles(roles);
+						this.loading = false;
 
-							// console.log(roles)
-						});
-				} catch (e) {
-					this.loading = false;
-					this.$toast.error(e.message);
-				}
+						// console.log(roles)
+					});
+			} catch (e) {
+				this.loading = false;
+				this.$toast.error(e.message);
 			}
 		}
-	};
+	}
+};
 </script>
