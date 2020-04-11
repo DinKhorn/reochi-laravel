@@ -12,10 +12,10 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_79551130 from 'nuxt_plugin_plugin_79551130' // Source: .\\vuetify\\plugin.js (mode: 'all')
-import nuxt_plugin_workbox_439eeb8b from 'nuxt_plugin_workbox_439eeb8b' // Source: .\\workbox.js (mode: 'client')
-import nuxt_plugin_nuxticons_1df92f0e from 'nuxt_plugin_nuxticons_1df92f0e' // Source: .\\nuxt-icons.js (mode: 'all')
-import nuxt_plugin_axios_4687462f from 'nuxt_plugin_axios_4687462f' // Source: .\\axios.js (mode: 'all')
+import nuxt_plugin_plugin_5ae7da7c from 'nuxt_plugin_plugin_5ae7da7c' // Source: .\\vuetify\\plugin.js (mode: 'all')
+import nuxt_plugin_workbox_a2b5fd1e from 'nuxt_plugin_workbox_a2b5fd1e' // Source: .\\workbox.js (mode: 'client')
+import nuxt_plugin_nuxticons_6a31c0d3 from 'nuxt_plugin_nuxticons_6a31c0d3' // Source: .\\nuxt-icons.js (mode: 'all')
+import nuxt_plugin_axios_07c59d95 from 'nuxt_plugin_axios_07c59d95' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_quilleditor_dc45d328 from 'nuxt_plugin_quilleditor_dc45d328' // Source: ..\\resources\\nuxt\\plugins\\quill-editor.js (mode: 'client')
 import nuxt_plugin_imageupload_8113ffa4 from 'nuxt_plugin_imageupload_8113ffa4' // Source: ..\\resources\\nuxt\\plugins\\image-upload.js (mode: 'client')
 import nuxt_plugin_DateRangePicker_6ada1350 from 'nuxt_plugin_DateRangePicker_6ada1350' // Source: ..\\resources\\nuxt\\plugins\\DateRangePicker.js (mode: 'client')
@@ -188,12 +188,12 @@ async function createApp (ssrContext) {
     await nuxt_plugin_plugin_79551130(app.context, inject)
   }
 
-  if (process.client && typeof nuxt_plugin_workbox_439eeb8b === 'function') {
-    await nuxt_plugin_workbox_439eeb8b(app.context, inject)
+  if (process.client && typeof nuxt_plugin_workbox_a2b5fd1e === 'function') {
+    await nuxt_plugin_workbox_a2b5fd1e(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_nuxticons_1df92f0e === 'function') {
-    await nuxt_plugin_nuxticons_1df92f0e(app.context, inject)
+  if (typeof nuxt_plugin_nuxticons_6a31c0d3 === 'function') {
+    await nuxt_plugin_nuxticons_6a31c0d3(app.context, inject)
   }
 
   if (typeof nuxt_plugin_axios_4687462f === 'function') {

@@ -12,7 +12,7 @@
 			</v-card-text>
 			<v-divider></v-divider>
 			<v-card-actions>
-				<v-btn @click.prevent="createOrder" class="blue mx-5 darken-2 mb-5 grey--text text--lighten-4">
+				<v-btn @click.prevent="updateItem" class="blue mx-5 darken-2 mb-5 grey--text text--lighten-4">
 					<v-icon left>mdi-content-save</v-icon>Save
 				</v-btn>
 			</v-card-actions>
@@ -40,7 +40,7 @@ export default {
 			outlets: [],
 			products: [],
 			orders: [],
-			order_status: ["New", "Accepted", "Received", "Cancel"],
+			order_status: ["Pending", "Accepted", "Cancel"],
 			payment_status: ["Paid", "Due"],
 			locations: []
 		};
@@ -73,9 +73,12 @@ export default {
 				.$patch(`api/order/` + this.form.id, {
 					name: this.form.name,
 					location: this.form.location,
+					outlet:this.form.outlet,
 					phone: this.form.phone,
 					create_by: this.form.create_by,
-					status: this.form.status
+					status: this.form.status,
+					items : this.form.items,
+					note : this.form.note,
 				})
 				.then(res => {
 					this.items = res.data;

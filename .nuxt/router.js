@@ -175,19 +175,19 @@ export const routerOptions = {
 
   routes: [{
     path: "/calendar",
-    component: _cf0a429e,
+    component: _59ebca65,
     name: "calendar"
   }, {
     path: "/charge",
-    component: _dfc1828a,
+    component: _2f00f122,
     name: "charge"
   }, {
     path: "/history",
-    component: _b357691e,
+    component: _59fd193d,
     name: "history"
   }, {
     path: "/match-history",
-    component: _58e31839,
+    component: _33755d05,
     name: "match-history"
   }, {
     path: "/outlet",
@@ -195,15 +195,15 @@ export const routerOptions = {
     name: "outlet"
   }, {
     path: "/payment-log",
-    component: _00c1a7e8,
+    component: _1712a098,
     name: "payment-log"
   }, {
     path: "/supplier",
-    component: _321cdb63,
+    component: _18e471d2,
     name: "supplier"
   }, {
     path: "/supports",
-    component: _31da37ab,
+    component: _1969b942,
     name: "supports"
   }, {
     path: "/tracking",
@@ -211,59 +211,59 @@ export const routerOptions = {
     name: "tracking"
   }, {
     path: "/accounting/account",
-    component: _2b3ab595,
+    component: _a3b2b16e,
     name: "accounting-account"
   }, {
     path: "/accounting/balancesheet",
-    component: _67b0e86a,
+    component: _519aead2,
     name: "accounting-balancesheet"
   }, {
     path: "/auth/login",
-    component: _76fc839e,
+    component: _247f6952,
     name: "auth-login"
   }, {
     path: "/delivery-man/add",
-    component: _110c14dd,
+    component: _39f0e391,
     name: "delivery-man-add"
   }, {
     path: "/delivery-man/list",
-    component: _a615f2dc,
+    component: _beabe344,
     name: "delivery-man-list"
   }, {
     path: "/expense/expense_categories",
-    component: _44734798,
+    component: _58fc454c,
     name: "expense-expense_categories"
   }, {
     path: "/expense/expense_list",
-    component: _2b7a1c1a,
+    component: _b99f1e64,
     name: "expense-expense_list"
   }, {
     path: "/hrm/attendance",
-    component: _231578e9,
+    component: _36f336c6,
     name: "hrm-attendance"
   }, {
     path: "/hrm/department",
-    component: _efb9065c,
+    component: _49946886,
     name: "hrm-department"
   }, {
     path: "/hrm/employee",
-    component: _9d4e0ed8,
+    component: _e8298540,
     name: "hrm-employee"
   }, {
     path: "/hrm/holiday",
-    component: _0ab48ff0,
+    component: _0500ee58,
     name: "hrm-holiday"
   }, {
     path: "/hrm/payroll",
-    component: _67c40356,
+    component: _621061be,
     name: "hrm-payroll"
   }, {
     path: "/order/add-order",
-    component: _3c0ed9f2,
+    component: _4ea51dd3,
     name: "order-add-order"
   }, {
     path: "/order/order-list",
-    component: _52e79728,
+    component: _7bcc65dc,
     name: "order-order-list"
   }, {
     path: "/outlet/new",
@@ -271,263 +271,263 @@ export const routerOptions = {
     name: "outlet-new"
   }, {
     path: "/people/add_biller",
-    component: _9093abd8,
+    component: _a9299c40,
     name: "people-add_biller"
   }, {
     path: "/people/add_member",
-    component: _3caf26ba,
+    component: _30642e86,
     name: "people-add_member"
   }, {
     path: "/people/biller",
-    component: _ec0c1e94,
+    component: _3da2be82,
     name: "people-biller"
   }, {
     path: "/people/member",
-    component: _0ef2ed5c,
+    component: _7ac889b0,
     name: "people-member"
   }, {
     path: "/product/add_adjustment",
-    component: _3f4a46d2,
+    component: _43ced44b,
     name: "product-add_adjustment"
   }, {
     path: "/product/add-product",
-    component: _7c5f91a7,
+    component: _56f1d673,
     name: "product-add-product"
   }, {
     path: "/product/brand",
-    component: _ae62ac92,
+    component: _2084fe6b,
     name: "product-brand"
   }, {
     path: "/product/category",
-    component: _16f919f8,
+    component: _220418c4,
     name: "product-category"
   }, {
     path: "/product/print-barcode",
-    component: _4477fc78,
+    component: _5cd84390,
     name: "product-print-barcode"
   }, {
     path: "/product/product-list",
-    component: _6d286b7a,
+    component: _2c81b774,
     name: "product-product-list"
   }, {
     path: "/product/qty_adjustment",
-    component: _95e3dc3c,
+    component: _18820996,
     name: "product-qty_adjustment"
   }, {
     path: "/product/stock-count",
-    component: _be844a08,
+    component: _7b501fc8,
     name: "product-stock-count"
   }, {
     path: "/purchase/add_purchase",
-    component: _3ac6fa5a,
+    component: _61b0c49f,
     name: "purchase-add_purchase"
   }, {
     path: "/purchase/import_purchase",
-    component: _06abb1d2,
+    component: _52ff01cb,
     name: "purchase-import_purchase"
   }, {
     path: "/purchase/purchase-list",
-    component: _5c139a26,
+    component: _80f0dc4c,
     name: "purchase-purchase-list"
   }, {
     path: "/quotation/add",
-    component: _c77c2670,
+    component: _4feaba94,
     name: "quotation-add"
   }, {
     path: "/quotation/quotations",
-    component: _8e5eaae0,
+    component: _3086ff44,
     name: "quotation-quotations"
   }, {
     path: "/report/best_seller",
-    component: _43f88ce3,
+    component: _723702d2,
     name: "report-best_seller"
   }, {
     path: "/report/customer_report",
-    component: _fa0d9544,
+    component: _3325a5dc,
     children: [{
       path: "",
-      component: _af9c0d38,
+      component: _59fdaf30,
       name: "report-customer_report"
     }, {
       path: "payment",
-      component: _12ad1bd0,
+      component: _645ee4e4,
       name: "report-customer_report-payment"
     }, {
       path: "quotation",
-      component: _c39127c4,
+      component: _745b5bea,
       name: "report-customer_report-quotation"
     }, {
       path: "return",
-      component: _f84e3fe4,
+      component: _0b83e3c2,
       name: "report-customer_report-return"
     }]
   }, {
     path: "/report/due_report",
-    component: _001ebdc6,
+    component: _185874dc,
     name: "report-due_report"
   }, {
     path: "/report/payment_report",
-    component: _02b332f4,
+    component: _fc711680,
     name: "report-payment_report"
   }, {
     path: "/report/product_quantity_alert",
-    component: _857fca42,
+    component: _6f0bd0ab,
     name: "report-product_quantity_alert"
   }, {
     path: "/report/product_report",
-    component: _43ccdc6b,
+    component: _7a3dc392,
     name: "report-product_report"
   }, {
     path: "/report/purchase_report",
-    component: _45062c5b,
+    component: _af0bb7e2,
     name: "report-purchase_report"
   }, {
     path: "/report/sale_report",
-    component: _1b4eb9d5,
+    component: _c38aa8ee,
     name: "report-sale_report"
   }, {
     path: "/report/summary_report",
-    component: _63e4f954,
+    component: _3a0d89c0,
     name: "report-summary_report"
   }, {
     path: "/report/supplier_report",
-    component: _5050dab0,
+    component: _98765b38,
     children: [{
       path: "",
-      component: _39f1d85c,
+      component: _d65a6cc4,
       name: "report-supplier_report"
     }, {
       path: "payment",
-      component: _5ebcadf4,
+      component: _3e571bd2,
       name: "report-supplier_report-payment"
     }, {
       path: "quotation",
-      component: _4a04c0e8,
+      component: _9dbce150,
       name: "report-supplier_report-quotation"
     }, {
       path: "return",
-      component: _b8b1d940,
+      component: _2b521714,
       name: "report-supplier_report-return"
     }]
   }, {
     path: "/report/user_report",
-    component: _e1e4185e,
+    component: _11f9e585,
     children: [{
       path: "",
-      component: _6712a391,
+      component: _494dc146,
       name: "report-user_report"
     }, {
       path: "expense",
-      component: _7b296257,
+      component: _107fc9ba,
       name: "report-user_report-expense"
     }, {
       path: "payment",
-      component: _ffef75f6,
+      component: _06c2045e,
       name: "report-user_report-payment"
     }, {
       path: "payroll",
-      component: _d6dbeeb8,
+      component: _1128c170,
       name: "report-user_report-payroll"
     }, {
       path: "purchase",
-      component: _3353e892,
+      component: _49944946,
       name: "report-user_report-purchase"
     }, {
       path: "quotation",
-      component: _4b2d37cb,
+      component: _060e24d2,
       name: "report-user_report-quotation"
     }, {
       path: "transfer",
-      component: _217c167c,
+      component: _37bc7730,
       name: "report-user_report-transfer"
     }]
   }, {
     path: "/report/warehouse_report",
-    component: _24e1ab52,
+    component: _0ecbadba,
     children: [{
       path: "",
-      component: _7673ab6a,
+      component: _4c712dff,
       name: "report-warehouse_report"
     }, {
       path: "expense",
-      component: _3a162291,
+      component: _f9e1ed76,
       name: "report-warehouse_report-expense"
     }, {
       path: "purchase",
-      component: _51ff2f98,
+      component: _28231f64,
       name: "report-warehouse_report-purchase"
     }, {
       path: "quotation",
-      component: _01ead185,
+      component: _1f76498e,
       name: "report-warehouse_report-quotation"
     }, {
       path: "return",
-      component: _0c6a67f2,
+      component: _67803ed3,
       name: "report-warehouse_report-return"
     }]
   }, {
     path: "/role/role-list",
-    component: _39f21abc,
+    component: _0939f320,
     name: "role-role-list"
   }, {
     path: "/sale/add_sale",
-    component: _1b6fe65f,
+    component: _61ce97aa,
     name: "sale-add_sale"
   }, {
     path: "/sale/coupons",
-    component: _caa0587a,
+    component: _19dfc712,
     name: "sale-coupons"
   }, {
     path: "/sale/delivery",
-    component: _4af4c5ae,
+    component: _02c4d90c,
     name: "sale-delivery"
   }, {
     path: "/sale/gift_card",
-    component: _517356f5,
+    component: _12e442a9,
     name: "sale-gift_card"
   }, {
     path: "/sale/import_sale",
-    component: _7709c257,
+    component: _c022ddea,
     name: "sale-import_sale"
   }, {
     path: "/sale/pos",
-    component: _50b0ae90,
+    component: _44543384,
     name: "sale-pos"
   }, {
     path: "/sale/sale-list",
-    component: _6b23cbcc,
+    component: _e841f464,
     name: "sale-sale-list"
   }, {
     path: "/salesman/add",
-    component: _4325bda0,
+    component: _36cd69e4,
     name: "salesman-add"
   }, {
     path: "/salesman/list",
-    component: _e894f6c2,
+    component: _3f5e526b,
     name: "salesman-list"
   }, {
     path: "/setting/system-settings",
-    component: _b29027b8,
+    component: _9c7a2a20,
     name: "setting-system-settings"
   }, {
     path: "/stock-in/add",
-    component: _2cbb4e82,
+    component: _f5c8d194,
     name: "stock-in-add"
   }, {
     path: "/stock-in/list",
-    component: _072d018d,
+    component: _8a54614e,
     name: "stock-in-list"
   }, {
     path: "/stock-out/add",
-    component: _2288e2c6,
+    component: _bb37472e,
     name: "stock-out-add"
   }, {
     path: "/stock-out/list",
-    component: _f596765c,
+    component: _46a5b086,
     name: "stock-out-list"
   }, {
     path: "/supplier/add",
-    component: _1a2495f2,
+    component: _7284dea6,
     name: "supplier-add"
   }, {
     path: "/tracking/create",
@@ -535,183 +535,183 @@ export const routerOptions = {
     name: "tracking-create"
   }, {
     path: "/transfer/add_transfer",
-    component: _e5ad85b2,
+    component: _0c3d7ef3,
     name: "transfer-add_transfer"
   }, {
     path: "/transfer/import_transfer",
-    component: _63c27857,
+    component: _8bd159ea,
     name: "transfer-import_transfer"
   }, {
     path: "/transfer/transfers",
-    component: _529c8e0c,
+    component: _599daaae,
     name: "transfer-transfers"
   }, {
     path: "/user/add-user",
-    component: _3d06b635,
+    component: _1ea0f7fe,
     name: "user-add-user"
   }, {
     path: "/user/profile",
-    component: _83f1a54a,
+    component: _1667760f,
     name: "user-profile"
   }, {
     path: "/user/user-list",
-    component: _34c57f12,
+    component: _13932a74,
     name: "user-user-list"
   }, {
     path: "/webcontrol/generalsettings",
-    component: _6d226e02,
+    component: _4410729a,
     name: "webcontrol-generalsettings"
   }, {
     path: "/webcontrol/sms-api",
-    component: _20a8cbcc,
+    component: _72978bce,
     name: "webcontrol-sms-api"
   }, {
     path: "/webcontrol/template",
-    component: _25418a94,
+    component: _701d00fc,
     name: "webcontrol-template"
   }, {
     path: "/webcontrol/terms",
-    component: _1db7ba7b,
+    component: _469c892f,
     name: "webcontrol-terms"
   }, {
     path: "/webinterface/about",
-    component: _7014f436,
+    component: _4ae17799,
     name: "webinterface-about"
   }, {
     path: "/webinterface/contact",
-    component: _b9af1610,
+    component: _1adec9ac,
     name: "webinterface-contact"
   }, {
     path: "/webinterface/footer",
-    component: _38c2ac73,
+    component: _1354f13f,
     name: "webinterface-footer"
   }, {
     path: "/webinterface/logo",
-    component: _60c7a483,
+    component: _547cac4f,
     name: "webinterface-logo"
   }, {
     path: "/webinterface/menu",
-    component: _781e0b92,
+    component: _90b3fbfa,
     name: "webinterface-menu"
   }, {
     path: "/webinterface/slide",
-    component: _2f5423ee,
+    component: _6b41dfbd,
     name: "webinterface-slide"
   }, {
     path: "/webinterface/social",
-    component: _74e2d545,
+    component: _4f751a11,
     name: "webinterface-social"
   }, {
     path: "/webinterface/team",
-    component: _f70d0f96,
+    component: _782e8001,
     name: "webinterface-team"
   }, {
     path: "/webinterface/testimonial",
-    component: _fee60412,
+    component: _523c4eaa,
     name: "webinterface-testimonial"
   }, {
     path: "/webinterface/tree-image",
-    component: _2075c8c4,
+    component: _2b80c790,
     name: "webinterface-tree-image"
   }, {
     path: "/withdraw/log",
-    component: _8367a8d2,
+    component: _16ac744b,
     name: "withdraw-log"
   }, {
     path: "/withdraw/method",
-    component: _fd7c9544,
+    component: _24237fac,
     name: "withdraw-method"
   }, {
     path: "/withdraw/requests",
-    component: _eacbd4fe,
+    component: _7e4f1d4d,
     name: "withdraw-requests"
   }, {
     path: "/hrm/employee/create",
-    component: _bd0b36ac,
+    component: _1930b95e,
     name: "hrm-employee-create"
   }, {
     path: "/product/category/add_category",
-    component: _a78ae7b4,
+    component: _33e58fda,
     name: "product-category-add_category"
   }, {
     path: "/return/return-purchase/create",
-    component: _39e60627,
+    component: _7cddec4a,
     name: "return-return-purchase-create"
   }, {
     path: "/return/return-purchase/view",
-    component: _0fdca7e0,
+    component: _0e520cc4,
     name: "return-return-purchase-view"
   }, {
     path: "/return/return-sale/create",
-    component: _1e05a16d,
+    component: _328e9f21,
     name: "return-return-sale-create"
   }, {
     path: "/return/return-sale/view",
-    component: _38693e54,
+    component: _3a203b8a,
     name: "return-return-sale-view"
   }, {
     path: "/sale/pos/create",
-    component: _4501b906,
+    component: _6de687ba,
     name: "sale-pos-create"
   }, {
     path: "/product/product-list/:id?",
-    component: _192c0440,
+    component: _3c62e494,
     name: "product-product-list-id"
   }, {
     path: "/return/return-purchase/:id?",
-    component: _3907a7fa,
+    component: _5c539492,
     name: "return-return-purchase-id"
   }, {
     path: "/return/return-sale/:id?",
-    component: _2c30b449,
+    component: _98489006,
     name: "return-return-sale-id"
   }, {
     path: "/sale/pos/:id",
-    component: _7c95513c,
+    component: _396bac16,
     name: "sale-pos-id"
   }, {
     path: "/product/product-list/:id?/edit",
-    component: _78aa2d28,
+    component: _31605c38,
     name: "product-product-list-id-edit"
   }, {
     path: "/return/return-purchase/:id?/edit",
-    component: _ed4e2a2e,
+    component: _5f7cdab5,
     name: "return-return-purchase-id-edit"
   }, {
     path: "/return/return-sale/:id?/edit",
-    component: _f9217c3a,
+    component: _353af7af,
     name: "return-return-sale-id-edit"
   }, {
     path: "/product/category/:id/:edit?",
-    component: _42dcc8b9,
+    component: _591d296d,
     name: "product-category-id-edit"
   }, {
     path: "/people/:id?",
-    component: _4d08051a,
+    component: _40bd0ce6,
     name: "people-id"
   }, {
     path: "/purchase/:id?",
-    component: _2f3e18cc,
+    component: _09d05d98,
     name: "purchase-id"
   }, {
     path: "/quotation/:id?",
-    component: _25e4f7fe,
+    component: _64c3d8b5,
     name: "quotation-id"
   }, {
     path: "/sale/:id?",
-    component: _651b24dc,
+    component: _3a1ef85e,
     name: "sale-id"
   }, {
     path: "/delivery-man/:id?/edit",
-    component: _3466c100,
+    component: _49409734,
     name: "delivery-man-id-edit"
   }, {
     path: "/order/:id?/detail",
-    component: _f0e9c8a0,
+    component: _7b40237c,
     name: "order-id-detail"
   }, {
     path: "/order/:id?/edit",
-    component: _775adaae,
+    component: _30ff1d75,
     name: "order-id-edit"
   }, {
     path: "/outlet/:id/detail",
@@ -723,55 +723,55 @@ export const routerOptions = {
     name: "outlet-id-edit"
   }, {
     path: "/people/:id?/add_member",
-    component: _3d1089e0,
+    component: _bef6fcd8,
     name: "people-id-add_member"
   }, {
     path: "/purchase/:id?/edit",
-    component: _28b1c100,
+    component: _a8c49a98,
     name: "purchase-id-edit"
   }, {
     path: "/quotation/:id?/edit",
-    component: _605d9b2b,
+    component: _3aefdff7,
     name: "quotation-id-edit"
   }, {
     path: "/sale/:id?/edit",
-    component: _6fdcbb7a,
+    component: _314da72e,
     name: "sale-id-edit"
   }, {
     path: "/salesman/:id?/edit",
-    component: _57d9e193,
+    component: _4a745972,
     name: "salesman-id-edit"
   }, {
     path: "/salesman/:id?/show",
-    component: _37aac5f4,
+    component: _67168eba,
     name: "salesman-id-show"
   }, {
     path: "/stock-in/:id?/detail",
-    component: _0791d928,
+    component: _73ed6820,
     name: "stock-in-id-detail"
   }, {
     path: "/stock-in/:id?/edit",
-    component: _c45d6d36,
+    component: _20bd3b19,
     name: "stock-in-id-edit"
   }, {
     path: "/stock-out/:id?/detail",
-    component: _7d2f0887,
+    component: _07796b5a,
     name: "stock-out-id-detail"
   }, {
     path: "/stock-out/:id?/edit",
-    component: _02e9c940,
+    component: _4507e3e8,
     name: "stock-out-id-edit"
   }, {
     path: "/supplier/:id/edit",
-    component: _17a33cd5,
+    component: _cae1a2ee,
     name: "supplier-id-edit"
   }, {
     path: "/transfer/:id?/edit",
-    component: _d806c654,
+    component: _16e88e8a,
     name: "transfer-id-edit"
   }, {
     path: "/user/:id?/edit",
-    component: _1d369776,
+    component: _42b0f9ac,
     name: "user-id-edit"
   }, {
     path: "/tracking/:id/:edit?",
@@ -779,15 +779,15 @@ export const routerOptions = {
     name: "tracking-id-edit"
   }, {
     path: "/people/:biller?/:id?/edit",
-    component: _50c69a93,
+    component: _75e5d342,
     name: "people-biller-id-edit"
   }, {
     path: "/",
-    component: _e3976b22,
+    component: _8b1af1ba,
     name: "index"
   }, {
     path: "/__laravel_nuxt__",
-    component: _e3976b22,
+    component: _8b1af1ba,
     name: "__laravel_nuxt__"
   }],
 

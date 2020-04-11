@@ -94,7 +94,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::select('users.*','R.name as role_name')->join("roles AS R","R.id","=","users.role_id")->findOrFail($id);
 
         return response()->json(['user' => $user]);
     }

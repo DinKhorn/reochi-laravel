@@ -31,7 +31,7 @@
 					outlined
 					dense
 					return-object
-					v-model="form.outlet_name"
+					v-model="form.outlet"
 					label="Please select Outlet"
 				></v-autocomplete>
 			</v-col>
@@ -133,7 +133,7 @@
 		</div>
 		<div class="d-flex flex-column mb-5">
 			<label for>Note</label>
-			<textarea cols="30" rows="7" class="textarea" v-model="form.description"></textarea>
+			<textarea cols="30" rows="7" class="textarea" v-model="form.note"></textarea>
 		</div>
 	</div>
 </template>
@@ -156,7 +156,7 @@ export default {
 			outlets: [],
 			products: [],
 			orders: [],
-			order_status: ["New", "Accepted", "Received", "Cancel"],
+			order_status: ["Pending", "Accepted", "Cancel"],
 			payment_status: ["Paid", "Due"],
 			locations: []
 		};

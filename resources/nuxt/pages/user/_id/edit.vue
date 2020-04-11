@@ -69,7 +69,7 @@
 								:items="roles"
 								required
 							></v-autocomplete> -->
-							<v-text-field outlined solo dense label="Role" v-model="form.role_id"></v-text-field>
+							<v-text-field outlined solo dense label="Role" v-model="form.role_name"></v-text-field>
 							<span class="red--text">{{ errors[0] }}</span>
 						</validation-provider>
 					</v-col>
@@ -77,7 +77,7 @@
 			</ValidationObserver>
 			<v-card-actions class="px-5">
 				<v-btn color="primary" @click.prevent="updateItem">
-					<v-icon>mdi-check</v-icon>Create
+					<v-icon>mdi-check</v-icon>Updated
 				</v-btn>
 			</v-card-actions>
 		</v-card>
