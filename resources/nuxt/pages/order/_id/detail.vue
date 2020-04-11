@@ -33,7 +33,6 @@
 							<th class="tablePurchase--tr">Product</th>
 							<th class="tablePurchase--tr">Qty</th>
 							<th class="tablePurchase--tr">Cost</th>
-							<th class="tablePurchase--tr">Discount (%)</th>
 							<th class="tablePurchase--tr">Sub Total</th>
 						</tr>
 						<tr v-if="order.order_detail" v-for="order_detail in order.order_detail">
@@ -42,19 +41,18 @@
 							<td class="tablePurchase--td">{{ order_detail.quantity }}</td>
 
 							<td class="tablePurchase--td">USD {{ order_detail.unit_price }}</td>
-							<td class="tablePurchase--td">{{ order_detail.discount }}%</td>
 							<td class="tablePurchase--td">USD {{ order_detail.amount }}</td>
 						</tr>
 						<tr class="tablePurchase--td">
-							<th class="tablePurchase--td" colspan="5">Grand Total</th>
+							<th class="tablePurchase--td" colspan="4">Grand Total</th>
 							<td class="tablePurchase--td">USD {{ order.sub_total }}</td>
 						</tr>
 						<tr class="tablePurchase--td">
-							<th class="tablePurchase--td" colspan="5">Due Amount</th>
+							<th class="tablePurchase--td" colspan="4">Due Amount</th>
 							<td class="tablePurchase--td">USD {{ order.due_amount }}</td>
 						</tr>
 						<tr>
-							<th class="tablePurchase--td" colspan="5">Total</th>
+							<th class="tablePurchase--td" colspan="4">Total</th>
 							<td class="tablePurchase--td">USD {{ order.total }}</td>
 						</tr>
 					</table>
