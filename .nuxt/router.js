@@ -6,12 +6,12 @@ import scrollBehavior from './router.scrollBehavior.js'
 const _331f1722 = () => interopDefault(import('..\\resources\\nuxt\\pages\\calendar\\index.vue' /* webpackChunkName: "pages_calendar_index" */))
 const _b2ae4128 = () => interopDefault(import('..\\resources\\nuxt\\pages\\charge\\index.vue' /* webpackChunkName: "pages_charge_index" */))
 const _60fec0e0 = () => interopDefault(import('..\\resources\\nuxt\\pages\\history\\index.vue' /* webpackChunkName: "pages_history_index" */))
-const _e530cbaa = () => interopDefault(import('..\\resources\\nuxt\\pages\\Location\\index.vue' /* webpackChunkName: "pages_Location_index" */))
 const _14f57e68 = () => interopDefault(import('..\\resources\\nuxt\\pages\\match-history\\index.vue' /* webpackChunkName: "pages_match-history_index" */))
 const _4cff4f1a = () => interopDefault(import('..\\resources\\nuxt\\pages\\outlet\\index.vue' /* webpackChunkName: "pages_outlet_index" */))
 const _65746452 = () => interopDefault(import('..\\resources\\nuxt\\pages\\payment-log\\index.vue' /* webpackChunkName: "pages_payment-log_index" */))
 const _667dd858 = () => interopDefault(import('..\\resources\\nuxt\\pages\\supplier\\index.vue' /* webpackChunkName: "pages_supplier_index" */))
 const _67031fc8 = () => interopDefault(import('..\\resources\\nuxt\\pages\\supports\\index.vue' /* webpackChunkName: "pages_supports_index" */))
+const _5b1183ee = () => interopDefault(import('..\\resources\\nuxt\\pages\\tracking\\index.vue' /* webpackChunkName: "pages_tracking_index" */))
 const _218964f4 = () => interopDefault(import('..\\resources\\nuxt\\pages\\accounting\\account.vue' /* webpackChunkName: "pages_accounting_account" */))
 const _61a57b0c = () => interopDefault(import('..\\resources\\nuxt\\pages\\accounting\\balancesheet.vue' /* webpackChunkName: "pages_accounting_balancesheet" */))
 const _28289c8f = () => interopDefault(import('..\\resources\\nuxt\\pages\\auth\\login.vue' /* webpackChunkName: "pages_auth_login" */))
@@ -24,7 +24,6 @@ const _22c7b543 = () => interopDefault(import('..\\resources\\nuxt\\pages\\hrm\\
 const _6d6b5ec3 = () => interopDefault(import('..\\resources\\nuxt\\pages\\hrm\\employee\\index.vue' /* webpackChunkName: "pages_hrm_employee_index" */))
 const _6efcbd37 = () => interopDefault(import('..\\resources\\nuxt\\pages\\hrm\\holiday.vue' /* webpackChunkName: "pages_hrm_holiday" */))
 const _40750384 = () => interopDefault(import('..\\resources\\nuxt\\pages\\hrm\\payroll.vue' /* webpackChunkName: "pages_hrm_payroll" */))
-const _473ff5f3 = () => interopDefault(import('..\\resources\\nuxt\\pages\\Location\\create.vue' /* webpackChunkName: "pages_Location_create" */))
 const _c8492e94 = () => interopDefault(import('..\\resources\\nuxt\\pages\\order\\add-order.vue' /* webpackChunkName: "pages_order_add-order" */))
 const _5541114e = () => interopDefault(import('..\\resources\\nuxt\\pages\\order\\order-list.vue' /* webpackChunkName: "pages_order_order-list" */))
 const _74549efe = () => interopDefault(import('..\\resources\\nuxt\\pages\\outlet\\new.vue' /* webpackChunkName: "pages_outlet_new" */))
@@ -93,6 +92,7 @@ const _7c511208 = () => interopDefault(import('..\\resources\\nuxt\\pages\\stock
 const _ad33f7e8 = () => interopDefault(import('..\\resources\\nuxt\\pages\\stock-out\\add.vue' /* webpackChunkName: "pages_stock-out_add" */))
 const _1fd8fd43 = () => interopDefault(import('..\\resources\\nuxt\\pages\\stock-out\\list.vue' /* webpackChunkName: "pages_stock-out_list" */))
 const _30ae36a3 = () => interopDefault(import('..\\resources\\nuxt\\pages\\supplier\\add.vue' /* webpackChunkName: "pages_supplier_add" */))
+const _b7b66456 = () => interopDefault(import('..\\resources\\nuxt\\pages\\tracking\\create.vue' /* webpackChunkName: "pages_tracking_create" */))
 const _e38a58d4 = () => interopDefault(import('..\\resources\\nuxt\\pages\\transfer\\add_transfer.vue' /* webpackChunkName: "pages_transfer_add_transfer" */))
 const _7d18d0f0 = () => interopDefault(import('..\\resources\\nuxt\\pages\\transfer\\import_transfer.vue' /* webpackChunkName: "pages_transfer_import_transfer" */))
 const _ca9b5e2a = () => interopDefault(import('..\\resources\\nuxt\\pages\\transfer\\transfers.vue' /* webpackChunkName: "pages_transfer_transfers" */))
@@ -153,7 +153,7 @@ const _8207a122 = () => interopDefault(import('..\\resources\\nuxt\\pages\\stock
 const _48b85674 = () => interopDefault(import('..\\resources\\nuxt\\pages\\supplier\\_id\\edit.vue' /* webpackChunkName: "pages_supplier__id_edit" */))
 const _57fd34c7 = () => interopDefault(import('..\\resources\\nuxt\\pages\\transfer\\_id\\edit.vue' /* webpackChunkName: "pages_transfer__id_edit" */))
 const _904a6032 = () => interopDefault(import('..\\resources\\nuxt\\pages\\user\\_id\\edit.vue' /* webpackChunkName: "pages_user__id_edit" */))
-const _64857066 = () => interopDefault(import('..\\resources\\nuxt\\pages\\Location\\_id\\_edit.vue' /* webpackChunkName: "pages_Location__id__edit" */))
+const _dcd0f170 = () => interopDefault(import('..\\resources\\nuxt\\pages\\tracking\\_id\\_edit.vue' /* webpackChunkName: "pages_tracking__id__edit" */))
 const _ad8d3cfc = () => interopDefault(import('..\\resources\\nuxt\\pages\\people\\_biller\\_id\\edit.vue' /* webpackChunkName: "pages_people__biller__id_edit" */))
 const _9643a7c0 = () => interopDefault(import('..\\resources\\nuxt\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
 
@@ -186,10 +186,6 @@ export const routerOptions = {
     component: _60fec0e0,
     name: "history"
   }, {
-    path: "/Location",
-    component: _e530cbaa,
-    name: "Location"
-  }, {
     path: "/match-history",
     component: _14f57e68,
     name: "match-history"
@@ -209,6 +205,10 @@ export const routerOptions = {
     path: "/supports",
     component: _67031fc8,
     name: "supports"
+  }, {
+    path: "/tracking",
+    component: _5b1183ee,
+    name: "tracking"
   }, {
     path: "/accounting/account",
     component: _218964f4,
@@ -257,10 +257,6 @@ export const routerOptions = {
     path: "/hrm/payroll",
     component: _40750384,
     name: "hrm-payroll"
-  }, {
-    path: "/Location/create",
-    component: _473ff5f3,
-    name: "Location-create"
   }, {
     path: "/order/add-order",
     component: _c8492e94,
@@ -534,6 +530,10 @@ export const routerOptions = {
     component: _30ae36a3,
     name: "supplier-add"
   }, {
+    path: "/tracking/create",
+    component: _b7b66456,
+    name: "tracking-create"
+  }, {
     path: "/transfer/add_transfer",
     component: _e38a58d4,
     name: "transfer-add_transfer"
@@ -774,9 +774,9 @@ export const routerOptions = {
     component: _904a6032,
     name: "user-id-edit"
   }, {
-    path: "/Location/:id/:edit?",
-    component: _64857066,
-    name: "Location-id-edit"
+    path: "/tracking/:id/:edit?",
+    component: _dcd0f170,
+    name: "tracking-id-edit"
   }, {
     path: "/people/:biller?/:id?/edit",
     component: _ad8d3cfc,
