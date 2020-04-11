@@ -65,8 +65,9 @@ export default {
 					.loginWith("password_grant", {
 						data: {
 							grant_type: "password",
-							client_id: 2,
-							client_secret: "SR4akECNVL4uhB5NKsvPWZMQEf5pVFzmg0pVL5NT",
+							client_id: 4,
+							client_secret:
+								"FXRgKyggjxEpeghEXkMQIiVamQMT52jeT4buRRWF",
 							scope: "*",
 							username: this.auth.username,
 							password: this.auth.password

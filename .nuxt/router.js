@@ -9,6 +9,7 @@ const _60fec0e0 = () => interopDefault(import('..\\resources\\nuxt\\pages\\histo
 const _14f57e68 = () => interopDefault(import('..\\resources\\nuxt\\pages\\match-history\\index.vue' /* webpackChunkName: "pages_match-history_index" */))
 const _4cff4f1a = () => interopDefault(import('..\\resources\\nuxt\\pages\\outlet\\index.vue' /* webpackChunkName: "pages_outlet_index" */))
 const _65746452 = () => interopDefault(import('..\\resources\\nuxt\\pages\\payment-log\\index.vue' /* webpackChunkName: "pages_payment-log_index" */))
+const _a610afde = () => interopDefault(import('..\\resources\\nuxt\\pages\\reward\\index.vue' /* webpackChunkName: "pages_reward_index" */))
 const _667dd858 = () => interopDefault(import('..\\resources\\nuxt\\pages\\supplier\\index.vue' /* webpackChunkName: "pages_supplier_index" */))
 const _67031fc8 = () => interopDefault(import('..\\resources\\nuxt\\pages\\supports\\index.vue' /* webpackChunkName: "pages_supports_index" */))
 const _5b1183ee = () => interopDefault(import('..\\resources\\nuxt\\pages\\tracking\\index.vue' /* webpackChunkName: "pages_tracking_index" */))
@@ -76,6 +77,7 @@ const _015180c2 = () => interopDefault(import('..\\resources\\nuxt\\pages\\repor
 const _722f9787 = () => interopDefault(import('..\\resources\\nuxt\\pages\\report\\warehouse_report\\purchase.vue' /* webpackChunkName: "pages_report_warehouse_report_purchase" */))
 const _30713114 = () => interopDefault(import('..\\resources\\nuxt\\pages\\report\\warehouse_report\\quotation.vue' /* webpackChunkName: "pages_report_warehouse_report_quotation" */))
 const _298263b6 = () => interopDefault(import('..\\resources\\nuxt\\pages\\report\\warehouse_report\\return.vue' /* webpackChunkName: "pages_report_warehouse_report_return" */))
+const _19b1a4cd = () => interopDefault(import('..\\resources\\nuxt\\pages\\reward\\create.vue' /* webpackChunkName: "pages_reward_create" */))
 const _56d359a6 = () => interopDefault(import('..\\resources\\nuxt\\pages\\role\\role-list.vue' /* webpackChunkName: "pages_role_role-list" */))
 const _53cb4864 = () => interopDefault(import('..\\resources\\nuxt\\pages\\sale\\add_sale.vue' /* webpackChunkName: "pages_sale_add_sale" */))
 const _9d8d1718 = () => interopDefault(import('..\\resources\\nuxt\\pages\\sale\\coupons.vue' /* webpackChunkName: "pages_sale_coupons" */))
@@ -197,6 +199,10 @@ export const routerOptions = {
     path: "/payment-log",
     component: _65746452,
     name: "payment-log"
+  }, {
+    path: "/reward",
+    component: _a610afde,
+    name: "reward"
   }, {
     path: "/supplier",
     component: _667dd858,
@@ -465,6 +471,10 @@ export const routerOptions = {
       component: _298263b6,
       name: "report-warehouse_report-return"
     }]
+  }, {
+    path: "/reward/create",
+    component: _19b1a4cd,
+    name: "reward-create"
   }, {
     path: "/role/role-list",
     component: _56d359a6,
@@ -785,10 +795,6 @@ export const routerOptions = {
     path: "/",
     component: _9643a7c0,
     name: "index"
-  }, {
-    path: "/__laravel_nuxt__",
-    component: _9643a7c0,
-    name: "__laravel_nuxt__"
   }],
 
   fallback: false

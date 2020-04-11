@@ -11,9 +11,10 @@
 			<v-data-table :headers="headers" :items="items">
 				<template v-slot:item="{ item }">
 					<tr>
-						<td>{{ item.name }}</td>
+						<td>{{ item.user ? item.user.name : null }}</td>
 						<td>{{ item.latitude }}</td>
 						<td>{{ item.longitude }}</td>
+						<td>{{ item.created_at }}</td>
 						<td>
 							<v-tooltip bottom v-permission="'edit tracking'">
 								<template v-slot:activator="{ on }">
@@ -40,53 +41,54 @@
 </template>
 
 <script>
-	export default {
-		created() {
-			this.fetchData();
+export default {
+	created() {
+		this.fetchData();
+	},
+
+	data() {
+		return {
+			items: [],
+			headers: [
+				{ text: "Name" },
+				{ text: "Latitude" },
+				{ text: "Logitude" },
+				{ text: "Created At", value: "created_at" },
+				{ text: "Action" }
+			]
+		};
+	},
+
+	methods: {
+		fetchData() {
+			this.$axios
+				.$get(`api/tracking`)
+				.then(res => {
+					this.items = res.data;
+					console.log(res);
+				})
+				.catch(err => {
+					console.log(err.response);
+				});
 		},
 
-		data() {
-			return {
-				items: [],
-				headers: [
-					{ text: "Name" },
-					{ text: "Latitude" },
-					{ text: "Logitude" },
-					{ text: "Action" }
-				]
-			};
+		editItem(id) {
+			this.$router.push(`/tracking/${id}/edit`);
 		},
 
-		methods: {
-			fetchData() {
+		deleteItem(id) {
+			if (confirm("Are u sure to delete it?")) {
 				this.$axios
-					.$get(`api/tracking`)
+					.$delete(`api/tracking/` + id)
 					.then(res => {
-						this.items = res.trackings.data;
-						console.log(res);
+						this.fetchData();
+						this.$toast.success("Deleted Successfully");
 					})
 					.catch(err => {
 						console.log(err.response);
 					});
-			},
-
-			editItem(id) {
-				this.$router.push(`/tracking/${id}/edit`);
-			},
-
-			deleteItem(id) {
-				if (confirm("Are u sure to delete it?")) {
-					this.$axios
-						.$delete(`api/tracking/` + id)
-						.then(res => {
-							this.fetchData();
-							this.$toast.success("Deleted Successfully");
-						})
-						.catch(err => {
-							console.log(err.response);
-						});
-				}
 			}
 		}
-	};
+	}
+};
 </script>
