@@ -125,7 +125,7 @@
 					</tr>
 					<tr>
 						<td class="py-3" colspan="2">Total</td>
-						<td colspan="3">{{ calculateQty }}</td>
+						<td colspan="2">{{ calculateQty }}</td>
 						<td>USD {{ form.total}}</td>
 					</tr>
 				</tbody>
