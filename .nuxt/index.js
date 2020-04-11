@@ -24,6 +24,8 @@ import nuxt_plugin_laravelpermission_07277359 from 'nuxt_plugin_laravelpermissio
 import nuxt_plugin_veevalidate_6e5ad03a from 'nuxt_plugin_veevalidate_6e5ad03a' // Source: ..\\resources\\nuxt\\plugins\\vee-validate (mode: 'all')
 import nuxt_plugin_notification_0f206214 from 'nuxt_plugin_notification_0f206214' // Source: ..\\resources\\nuxt\\plugins\\notification.js (mode: 'client')
 import nuxt_plugin_vuefullcalendar_de1442e6 from 'nuxt_plugin_vuefullcalendar_de1442e6' // Source: ..\\resources\\nuxt\\plugins\\vue-fullcalendar.js (mode: 'client')
+import nuxt_plugin_vueimageinput_5c12573c from 'nuxt_plugin_vueimageinput_5c12573c' // Source: ..\\resources\\nuxt\\plugins\\vue-image-input.js (mode: 'client')
+import nuxt_plugin_vuebrowsergeolocation_646f1793 from 'nuxt_plugin_vuebrowsergeolocation_646f1793' // Source: ..\\resources\\nuxt\\plugins\\vue-browser-geolocation.js (mode: 'client')
 import nuxt_plugin_plugin_5cef969e from 'nuxt_plugin_plugin_5cef969e' // Source: .\\auth\\plugin.js (mode: 'all')
 
 // Component: <ClientOnly>
@@ -182,7 +184,6 @@ async function createApp (ssrContext) {
 
   // Plugin execution
 
-<<<<<<< HEAD
   if (typeof nuxt_plugin_plugin_79551130 === 'function') {
     await nuxt_plugin_plugin_79551130(app.context, inject)
   }
@@ -197,22 +198,6 @@ async function createApp (ssrContext) {
 
   if (typeof nuxt_plugin_axios_4687462f === 'function') {
     await nuxt_plugin_axios_4687462f(app.context, inject)
-=======
-  if (typeof nuxt_plugin_plugin_2292669f === 'function') {
-    await nuxt_plugin_plugin_2292669f(app.context, inject)
-  }
-
-  if (process.client && typeof nuxt_plugin_workbox_71829c34 === 'function') {
-    await nuxt_plugin_workbox_71829c34(app.context, inject)
-  }
-
-  if (typeof nuxt_plugin_nuxticons_248e8b30 === 'function') {
-    await nuxt_plugin_nuxticons_248e8b30(app.context, inject)
-  }
-
-  if (typeof nuxt_plugin_axios_487de5d0 === 'function') {
-    await nuxt_plugin_axios_487de5d0(app.context, inject)
->>>>>>> 74063d85094b5fabd07fad4201802c19fef2965d
   }
 
   if (process.client && typeof nuxt_plugin_quilleditor_dc45d328 === 'function') {
@@ -247,10 +232,6 @@ async function createApp (ssrContext) {
     await nuxt_plugin_vuefullcalendar_de1442e6(app.context, inject)
   }
 
-<<<<<<< HEAD
-  if (typeof nuxt_plugin_plugin_5cef969e === 'function') {
-    await nuxt_plugin_plugin_5cef969e(app.context, inject)
-=======
   if (process.client && typeof nuxt_plugin_vueimageinput_5c12573c === 'function') {
     await nuxt_plugin_vueimageinput_5c12573c(app.context, inject)
   }
@@ -259,9 +240,8 @@ async function createApp (ssrContext) {
     await nuxt_plugin_vuebrowsergeolocation_646f1793(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_plugin_ca6e6a72 === 'function') {
-    await nuxt_plugin_plugin_ca6e6a72(app.context, inject)
->>>>>>> 74063d85094b5fabd07fad4201802c19fef2965d
+  if (typeof nuxt_plugin_plugin_5cef969e === 'function') {
+    await nuxt_plugin_plugin_5cef969e(app.context, inject)
   }
 
   // If server-side, wait for async component to be resolved first

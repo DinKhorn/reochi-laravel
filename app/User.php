@@ -47,10 +47,10 @@ class User extends Authenticatable
         return $this->belongsTo(\App\Role::class);
     }
 
-    // public function branches()
-    // {
-    //     return $this->hasMany(\App\Branch::class); 
-    // }
+    public function trackings()
+    {
+        return $this->hasMany(\App\Tracking::class); 
+    }
 
     // public function products()
     // {

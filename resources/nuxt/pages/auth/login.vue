@@ -65,8 +65,8 @@ export default {
 					.loginWith("password_grant", {
 						data: {
 							grant_type: "password",
-							client_id: process.env.PASSPORT_PASSWORD_GRANT_ID,
-							client_secret: process.env.PASSPORT_PASSWORD_GRANT_SECRET,
+							client_id: 2,
+							client_secret: "SR4akECNVL4uhB5NKsvPWZMQEf5pVFzmg0pVL5NT",
 							scope: "*",
 							username: this.auth.username,
 							password: this.auth.password

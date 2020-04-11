@@ -229,10 +229,10 @@ export default {
 					
 				},
 				{
-					name: " Seller Location",
+					name: " Seller Tracking",
 					to: "/location/",
 					icon: "mdi-google-maps",
-					permission: "view location"
+					permission: "view tracking"
 					
 				},
 				{
@@ -326,11 +326,11 @@ export default {
 				"add order",
 				"edit order",
 				"delete order",
-				"view location",
-				"add location",
-				"edit location",
-				"delete location",
-				"import location",
+				"view tracking",
+				"add tracking",
+				"edit tracking",
+				"delete tracking",
+				"import tracking",
 				"view role",
 				"add role",
 				"edit role",
@@ -376,11 +376,11 @@ export default {
 				"edit product",
 				"delete product",
 				"import product",
-				"view location",
-				"add location",
-				"edit location",
-				"delete location",
-				"import location",
+				"view tracking",
+				"add tracking",
+				"edit tracking",
+				"delete tracking",
+				"import tracking",
 				"view outlet",
 				"add outlet",
 				"edit outlet",
