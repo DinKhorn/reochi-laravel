@@ -1,7 +1,7 @@
 <template>
 	<v-app class="mx-5 my-5">
 		<v-card id="printProduct">
-			<v-card-title class="blue-grey lighten-4">Order Detail</v-card-title>
+			<v-card-title class="blue-grey lighten-4">Stockin Detail</v-card-title>
 			<v-divider></v-divider>
 			<div class="px-5 pt-5">
 				<v-row>
@@ -37,7 +37,7 @@
 							<td class="tablePurchase--td">{{ stock_in_detail.quantity }}</td>
 
 							<td class="tablePurchase--td">{{ stock_in_detail.unit_price }}</td>
-							<td class="tablePurchase--td">calculateTotal</td>
+							<td class="tablePurchase--td">USD {{ calculateTotal }}</td>
 						</tr>
 						<tr class="tablePurchase--td">
 							<th class="tablePurchase--td" colspan="4">Grand Total</th>
@@ -72,11 +72,17 @@
 		},
 		computed: {
 			calculateTotal() {
-				return this.reduce((total, item) => {
+				return this.stock_in.stock_in_detail.reduce((total, item) => {
 					let s = item.unit_price * item.quantity;
 					return total + s;
 				}, 0);
-			}
+			},
+			
+			calculateQty() {
+			return this.form.items.reduce((total, item) => {
+				return total + Number(item.quantity);
+			}, 0);
+		},
 		},
 		methods: {
 			fetchData() {
@@ -84,7 +90,7 @@
 					.$get(`api/stock-in/` + this.$route.params.id)
 					.then(res => {
 						this.stock_in = res[1];
-						console.log(res);
+						// console.log(res);
 					})
 					.catch(err => {
 						console.log(err.response);

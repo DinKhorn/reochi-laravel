@@ -12,10 +12,10 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_2292669f from 'nuxt_plugin_plugin_2292669f' // Source: .\\vuetify\\plugin.js (mode: 'all')
-import nuxt_plugin_workbox_71829c34 from 'nuxt_plugin_workbox_71829c34' // Source: .\\workbox.js (mode: 'client')
-import nuxt_plugin_nuxticons_248e8b30 from 'nuxt_plugin_nuxticons_248e8b30' // Source: .\\nuxt-icons.js (mode: 'all')
-import nuxt_plugin_axios_487de5d0 from 'nuxt_plugin_axios_487de5d0' // Source: .\\axios.js (mode: 'all')
+import nuxt_plugin_plugin_5ae7da7c from 'nuxt_plugin_plugin_5ae7da7c' // Source: .\\vuetify\\plugin.js (mode: 'all')
+import nuxt_plugin_workbox_a2b5fd1e from 'nuxt_plugin_workbox_a2b5fd1e' // Source: .\\workbox.js (mode: 'client')
+import nuxt_plugin_nuxticons_6a31c0d3 from 'nuxt_plugin_nuxticons_6a31c0d3' // Source: .\\nuxt-icons.js (mode: 'all')
+import nuxt_plugin_axios_07c59d95 from 'nuxt_plugin_axios_07c59d95' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_quilleditor_dc45d328 from 'nuxt_plugin_quilleditor_dc45d328' // Source: ..\\resources\\nuxt\\plugins\\quill-editor.js (mode: 'client')
 import nuxt_plugin_imageupload_8113ffa4 from 'nuxt_plugin_imageupload_8113ffa4' // Source: ..\\resources\\nuxt\\plugins\\image-upload.js (mode: 'client')
 import nuxt_plugin_DateRangePicker_6ada1350 from 'nuxt_plugin_DateRangePicker_6ada1350' // Source: ..\\resources\\nuxt\\plugins\\DateRangePicker.js (mode: 'client')
@@ -26,7 +26,7 @@ import nuxt_plugin_notification_0f206214 from 'nuxt_plugin_notification_0f206214
 import nuxt_plugin_vuefullcalendar_de1442e6 from 'nuxt_plugin_vuefullcalendar_de1442e6' // Source: ..\\resources\\nuxt\\plugins\\vue-fullcalendar.js (mode: 'client')
 import nuxt_plugin_vueimageinput_5c12573c from 'nuxt_plugin_vueimageinput_5c12573c' // Source: ..\\resources\\nuxt\\plugins\\vue-image-input.js (mode: 'client')
 import nuxt_plugin_vuebrowsergeolocation_646f1793 from 'nuxt_plugin_vuebrowsergeolocation_646f1793' // Source: ..\\resources\\nuxt\\plugins\\vue-browser-geolocation.js (mode: 'client')
-import nuxt_plugin_plugin_ca6e6a72 from 'nuxt_plugin_plugin_ca6e6a72' // Source: .\\auth\\plugin.js (mode: 'all')
+import nuxt_plugin_plugin_098c4984 from 'nuxt_plugin_plugin_098c4984' // Source: .\\auth\\plugin.js (mode: 'all')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -184,20 +184,20 @@ async function createApp (ssrContext) {
 
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_2292669f === 'function') {
-    await nuxt_plugin_plugin_2292669f(app.context, inject)
+  if (typeof nuxt_plugin_plugin_5ae7da7c === 'function') {
+    await nuxt_plugin_plugin_5ae7da7c(app.context, inject)
   }
 
-  if (process.client && typeof nuxt_plugin_workbox_71829c34 === 'function') {
-    await nuxt_plugin_workbox_71829c34(app.context, inject)
+  if (process.client && typeof nuxt_plugin_workbox_a2b5fd1e === 'function') {
+    await nuxt_plugin_workbox_a2b5fd1e(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_nuxticons_248e8b30 === 'function') {
-    await nuxt_plugin_nuxticons_248e8b30(app.context, inject)
+  if (typeof nuxt_plugin_nuxticons_6a31c0d3 === 'function') {
+    await nuxt_plugin_nuxticons_6a31c0d3(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_487de5d0 === 'function') {
-    await nuxt_plugin_axios_487de5d0(app.context, inject)
+  if (typeof nuxt_plugin_axios_07c59d95 === 'function') {
+    await nuxt_plugin_axios_07c59d95(app.context, inject)
   }
 
   if (process.client && typeof nuxt_plugin_quilleditor_dc45d328 === 'function') {
@@ -240,8 +240,8 @@ async function createApp (ssrContext) {
     await nuxt_plugin_vuebrowsergeolocation_646f1793(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_plugin_ca6e6a72 === 'function') {
-    await nuxt_plugin_plugin_ca6e6a72(app.context, inject)
+  if (typeof nuxt_plugin_plugin_098c4984 === 'function') {
+    await nuxt_plugin_plugin_098c4984(app.context, inject)
   }
 
   // If server-side, wait for async component to be resolved first
