@@ -17,7 +17,7 @@ class CreateTrackingsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->double('longitude');
-            $table->double('latitude'); 
+            $table->double('latitude');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

@@ -56,21 +56,7 @@ export default {
 					amount: 678
 				}
 			]
-
-			
 		};
-	},
-
-	mounted() {
-		var options = {
-			enableHighAccuracy: true, //defaults to false
-			timeout: Infinity, //defaults to Infinity
-			maximumAge: 0 //defaults to 0
-		};
-		this.$watchLocation(options).then(coordinates => {
-			//Save to database
-			console.log(coordinates);
-		});
 	}
 };
 </script>

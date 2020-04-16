@@ -216,7 +216,6 @@ export default {
 							to: "/stock-out/list",
 							icon: "mdi-clipboard-arrow-up-outline",
 							permission: "view stock-out"
-							
 						}
 					]
 				},
@@ -226,14 +225,12 @@ export default {
 					to: "/transfer/transfers",
 					icon: "mdi-transfer-right",
 					permission: "view transfer"
-					
 				},
 				{
 					name: " Seller Tracking",
 					to: "/location/",
 					icon: "mdi-google-maps",
 					permission: "view tracking"
-					
 				},
 				{
 					name: "Reward",
@@ -245,6 +242,12 @@ export default {
 					name: "Supplier",
 					to: "/supplier/",
 					icon: "mdi-account-multiple",
+					permission: "view supplier"
+				},
+				{
+					name: "Tracking",
+					to: "/tracking/",
+					icon: "mdi-map",
 					permission: "view supplier"
 				},
 				{
@@ -261,6 +264,25 @@ export default {
 		logout() {
 			this.$auth.logout();
 		}
+	},
+
+	mounted() {
+		var options = {
+			enableHighAccuracy: true, //defaults to false
+			timeout: Infinity, //defaults to Infinity
+			maximumAge: 0 //defaults to 0
+		};
+
+		this.$watchLocation(options).then(coordinates => {
+			//Save to database
+			this.$axios.$post("/api/tracking", coordinates).then(response => {
+				if (response.created) {
+					console.log("posted");
+				} else {
+					console.log("error posted");
+				}
+			});
+		});
 	},
 
 	computed: {

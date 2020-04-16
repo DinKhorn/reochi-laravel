@@ -11,7 +11,6 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'V1'], function () {
         Route::get('me', 'AuthController@me');
         Route::get('permissions', 'PermissionController')->name('permission');
         Route::get('roles', 'RoleController')->name('roles');
-        
     });
 
     Route::apiResources([
@@ -33,12 +32,12 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'V1'], function () {
         'biller' => 'BillerController',
         'supplier' => 'SupplierController',
         'transfer' => 'TransferController',
-        'tracking'=>'TrackingController',
+        'tracking' => 'TrackingController',
         // 'location' => 'LocationController',
         'brand' => 'BrandController',
         'quotation'     => 'QuotationController',
         'return-sale'    => 'ReturnSaleController',
-        'return-purchase'=> 'ReturnPurchaseController',
+        'return-purchase' => 'ReturnPurchaseController',
 
         'calendar' => 'CalendarController',
         'outlets' => 'OutletController',
@@ -49,6 +48,7 @@ Route::group(['middleware' => 'auth:api', 'namespace' => 'V1'], function () {
         'category' => 'CategoryController',
         'salesman' => 'SalesmanController',
         'delivery-man' => 'DeliverymanController',
+        'reward'    => 'RewardController',
     ]);
 
     Route::get('activity', 'ActivityController@index');
@@ -94,4 +94,3 @@ Route::get('deliveryman/export-pdf', 'V1\DeliveryManController@export_pdf');
 // Stockin
 Route::get('stockin/export-csv', 'V1\StockInController@export_csv');
 Route::get('stockin/export-pdf', 'V1\StockInController@export_pdf');
-
